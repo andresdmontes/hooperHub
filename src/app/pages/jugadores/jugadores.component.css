@@ -1,0 +1,8 @@
+
+.container tr:nth-child(even){background-color: #f2f2f2;}
+
+.container tr:hover {background-color: #ddd;}
+
+.bg-color{
+  background-color: var(--bgColor);
+}

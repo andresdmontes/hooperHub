@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Equipos por conferencia NBA</h1>
+  <form class="form-group">
+    <div class="row d-flex align-items-center">
+      <div class="col-md-6">
+        <!-- <label for="conferenciaSelect">Conferencia:</label> -->
+        <select class="form-control" name="conferencias" id="conferenciaSelect" [(ngModel)]="conferenciaSeleccionada"
+          (ngModelChange)="filtrarPorConferencia()">
+          <option *ngFor="let conferencia of conferencias" [value]="conferencia">{{conferencia | titlecase }}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <div ngbDropdown class="d-inline-block">
+          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            Order By
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="ordernarPorNombreDesc()">Name</button>
+            <button ngbDropdownItem (click)="ordernarPorNombreAsc()">Another Action</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let equipo of equiposFiltrados">
+      <div class="row no-gutters">
+        <div class="col-sm-5">
+          <img class="card-img" src="{{equipo.WikipediaLogoUrl}}" alt="{{equipo.Name}}">
+        </div>
+        <div class="col-sm-7">
+          <div class="card-body">
+            <h5 class="card-title">{{equipo.Name}}</h5>
+            <p class="card-text">{{equipo.Conference}} - {{equipo.Division}}</p>
+            <a href="#" class="btn btn-primary">View Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
