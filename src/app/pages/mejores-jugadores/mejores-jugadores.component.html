@@ -1,8 +1,8 @@
 <div class="d-flex flex-wrap justify-content-center">
-  <app-card class="m-3"></app-card>
-  <app-card class="m-3"></app-card>
-  <app-card class="m-3"></app-card>
-  <app-card class="m-3"></app-card>
-  <app-card class="m-3"></app-card>
-  <app-card class="m-3"></app-card>
+  <app-card class="m-3" [titulo]= titulos[0]  [datos]="filtrarCincoMejoresCategoria('Points')"></app-card>
+  <app-card class="m-3" [titulo]= titulos[1] [datos]="filtrarCincoMejoresCategoria('Rebounds')"></app-card>
+  <app-card class="m-3" [titulo]= titulos[2] [datos]="filtrarCincoMejoresCategoria('Assists')"></app-card>
+  <app-card class="m-3" [titulo]= titulos[3] [datos]="filtrarCincoMejoresCategoria('FieldGoalsPercentage')"></app-card>
+  <app-card class="m-3" [titulo]= titulos[4] [datos]="filtrarCincoMejoresCategoria('PlusMinus')"></app-card>
+  <app-card class="m-3" [titulo]= titulos[5] [datos]="filtrarCincoMejoresCategoria('Steals')"></app-card>
 </div>
