@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   standalone:true,
@@ -7,9 +8,11 @@ import { RouterModule } from '@angular/router';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
   imports:[
-    RouterModule
+    RouterModule,
+    NgbCollapseModule,
+    RouterLink
   ]
 })
 export class NavBarComponent {
-
+  isMenuCollapsed = true;
 }
