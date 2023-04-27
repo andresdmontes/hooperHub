@@ -1,17 +1,21 @@
 <div class="container">
-  <h1>Jugadores NBA</h1>
-  <div *ngIf="jugadoresFiltrados.length==0">
-    <h1>Seleccione un Equipo</h1>
-  </div>
+  <h1>Filtrar Jugadores NBA</h1>
 
-  <form class="form-group">
-    <label for="conferenciaSelect">Equipo:</label>
-    <select class="form-control" id="equipoSelect" [(ngModel)]="nombreEquipoSeleccionado"
-      (ngModelChange)="filtrarPorEquipo()" name="first">
-      <option value="" disabled hidden>Please choose one</option>
-      <option *ngFor="let equipo of equipos"> {{equipo.Name}} </option>
-    </select>
-  </form>
+  <!-- <form class="form-group row align-items-end"> -->
+    <div class="col align-items-center">
+      <!-- <div *ngIf="jugadoresFiltrados.length==0">
+        <h1>Seleccione un Equipo</h1>
+      </div>
+      <label for="conferenciaSelect">Equipo:</label>
+      <select class="form-control" id="equipoSelect" [(ngModel)]="nombreEquipoSeleccionado"
+        (ngModelChange)="filtrarPorEquipo()" name="first">
+        <option value="" disabled hidden>Please choose one</option>
+        <option *ngFor="let equipo of equipos"> {{equipo.Name}} </option>
+      </select>
+    </div> -->
+    <app-filtrar class="col"></app-filtrar>
+  <!-- </form> -->
+
 
 
 

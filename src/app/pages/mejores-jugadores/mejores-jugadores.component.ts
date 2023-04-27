@@ -20,7 +20,6 @@ export class MejoresJugadoresComponent implements OnInit {
   estadisticasJugadores: JugadorStats[];
   año: number;
   titulos: string[];
-
   top5: JugadorStats[];
   mejorJugador: JugadorStats;
 
@@ -64,10 +63,45 @@ export class MejoresJugadoresComponent implements OnInit {
         return 0;
       }
     });
-    return this.estadisticasJugadores.slice(0, 5);
+    return this.estadisticasJugadores.slice(1, 5);
   }
 
-  // separaJugadores(){
-  //   [this.mejorJugador, ...this.top5] = this.filtrarCincoMejoresCategoria();
-  // }
+  filtrarCincoMejoresCategoriaPorPartido<T extends keyof JugadorStats>(categoria: T) {
+    this.estadisticasJugadores.sort((a, b) => {
+      if (typeof a[categoria] === 'number') {
+        return ((b[categoria] as number)/b.Games) - ((a[categoria] as number)/ a.Games);
+      } else if (typeof a[categoria] === 'string') {
+        return (b[categoria] as string).localeCompare(a[categoria] as string);
+      } else {
+        return 0;
+      }
+    });
+    return this.estadisticasJugadores.slice(1, 5);
+  }
+
+  filtrarMejorJugadorCategoria<T extends keyof JugadorStats>(categoria: T) {
+    this.estadisticasJugadores.sort((a, b) => {
+      if (typeof a[categoria] === 'number') {
+        return (b[categoria] as number) - (a[categoria] as number);
+      } else if (typeof a[categoria] === 'string') {
+        return (b[categoria] as string).localeCompare(a[categoria] as string);
+      } else {
+        return 0;
+      }
+    });
+    return this.estadisticasJugadores[0];
+  }
+  filtrarMejorJugadorCategoriaPorPartido<T extends keyof JugadorStats>(categoria: T) {
+    this.estadisticasJugadores.sort((a, b) => {
+      if (typeof a[categoria] === 'number') {
+        return ((b[categoria] as number)/b.Games) - ((a[categoria] as number)/ a.Games);
+      } else if (typeof a[categoria] === 'string') {
+        return (b[categoria] as string).localeCompare(a[categoria] as string);
+      } else {
+        return 0;
+      }
+    });
+    return this.estadisticasJugadores[0];
+  }
+
 }

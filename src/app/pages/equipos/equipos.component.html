@@ -3,7 +3,6 @@
   <form class="form-group">
     <div class="row d-flex align-items-center">
       <div class="col-md-6">
-        <!-- <label for="conferenciaSelect">Conferencia:</label> -->
         <select class="form-control" name="conferencias" id="conferenciaSelect" [(ngModel)]="conferenciaSeleccionada"
           (ngModelChange)="filtrarPorConferencia()">
           <option *ngFor="let conferencia of conferencias" [value]="conferencia">{{conferencia | titlecase }}</option>

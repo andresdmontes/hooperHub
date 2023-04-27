@@ -4,13 +4,14 @@ import { Equipo } from 'src/app/interfaces/equipo.interface';
 import { Jugador } from 'src/app/interfaces/jugador.interface';
 import { SearchService } from 'src/app/services/search.service';
 import { FormsModule } from '@angular/forms';
+import { FiltrarComponent } from 'src/app/shared/components/filtrar/filtrar.component';
 
 @Component({
   standalone: true,
   selector: 'app-jugadores',
   templateUrl: './jugadores.component.html',
   styleUrls: ['./jugadores.component.css'],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,FiltrarComponent],
 })
 export class JugadoresComponent implements OnInit {
   jugadoresFiltrados: Jugador[];

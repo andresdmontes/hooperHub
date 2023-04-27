@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Equipo } from '../interfaces/equipo.interface';
+import { Jugador } from '../interfaces/jugador.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +30,11 @@ export class SearchService {
       return this.http.get<any[]>(`${this.baseApiUrl}&Conference=${conferencia}`);
     }
   }
+
+  obtenenerJugadorPorID(id:number): Observable<Jugador>{
+    return this.http.get<Jugador>(this.baseApiUrl + 'Player/'+id+'?key=' + this.apiKey);
+  }
+
 
   obtenerTodosLosJugadoresActivos(){
     return this.http.get<any[]>(this.baseApiUrl + 'Players?key=' + this.apiKey);
