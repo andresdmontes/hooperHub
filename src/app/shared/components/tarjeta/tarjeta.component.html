@@ -1,6 +1,6 @@
 <div class="container tarjeta">
   <div>
-    <h3 class="display-3">{{titulo}}</h3>
+    <h3 class="display-3">Hola</h3>
   </div>
   <hr>
   <div class="row d-flex justify-content-between align-items-center">
@@ -10,11 +10,12 @@
     <div class="col"><img width="50px" src="https://sports.cbsimg.net/fly/images/nba/logos/team/353.svg" alt="logo">
     </div>
     <div class="col">
-      <p class="m-0"><strong>{{ mejorJugador.Position}}·{{mejorJugador.Name}}</strong></p>
-
+      <!-- <p class="m-0"><strong>{{mejorJugador.Name}}</strong></p>
+      <p><strong> {{ mejorJugador.Position}}· {{mejorJugador}}</strong></p> -->
     </div>
     <div class="col">
-      <p class="m-0"> <strong>{{ getStats(mejorJugador) | number:'.1-1' }} · {{titulo.charAt(0)}}PP </strong></p>
+      <!-- <p class="m-0"><strong></strong> {{mejorJugador.Points / mejorJugador.Games | number: '1.0-2'}} </p> -->
+      <p><strong>PPG</strong></p>
     </div>
   </div>
   <table class="table table-striped table-hover ">
@@ -28,11 +29,11 @@
     </thead>
     <tbody>
 
-      <tr *ngFor="let jugador of top5;let i = index ">
+      <tr *ngFor="let jugador of jugadoresFiltrados;let i = index ">
         <td>{{jugador.Name}}</td>
         <td><img width="30px" src="https://sports.cbsimg.net/fly/images/nba/logos/team/353.svg" alt="logo"></td>
         <td>
-          {{ getStats(jugador) | number:'.1-1'}}
+          {{ jugador }}
         </td>
 
         <td>PPG</td>
@@ -41,6 +42,6 @@
     </tbody>
   </table>
 
-  <div class="text-center" >Ver todo</div>
+  <div class="text-center">Ver todo</div>
 
 </div>

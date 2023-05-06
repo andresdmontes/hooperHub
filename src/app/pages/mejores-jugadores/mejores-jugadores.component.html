@@ -1,15 +1,8 @@
 <div class="d-flex flex-wrap justify-content-center">
-  <app-card class="w-30 m-3" [titulo]=titulos[0] [mejorJugador]="filtrarMejorJugadorCategoriaPorPartido('Points')"
-    [top5]="filtrarCincoMejoresCategoriaPorPartido('Points')"></app-card>
-  <app-card class="w-30 m-3" [titulo]=titulos[1] [mejorJugador]="filtrarMejorJugadorCategoriaPorPartido('Rebounds')"
-    [top5]="filtrarCincoMejoresCategoriaPorPartido('Rebounds')"></app-card>
-  <app-card class="w-30 m-3" [titulo]=titulos[2] [mejorJugador]="filtrarMejorJugadorCategoriaPorPartido('Assists')"
-    [top5]="filtrarCincoMejoresCategoriaPorPartido('Assists')"></app-card>
-  <app-card class="w-30 m-3" [titulo]=titulos[3]
-    [mejorJugador]="filtrarMejorJugadorCategoriaPorPartido('FieldGoalsPercentage')"
-    [top5]="filtrarCincoMejoresCategoriaPorPartido('FieldGoalsPercentage')"></app-card>
-  <app-card class="w-30 m-3" [titulo]=titulos[4] [mejorJugador]="filtrarMejorJugadorCategoriaPorPartido('PlusMinus')"
-    [top5]="filtrarCincoMejoresCategoriaPorPartido('PlusMinus')"></app-card>
-  <app-card class="w-30 m-3" [titulo]=titulos[5] [mejorJugador]="filtrarMejorJugadorCategoriaPorPartido('Steals')"
-    [top5]="filtrarCincoMejoresCategoriaPorPartido('Steals')"></app-card>
+  <app-card class="w-30 m-3" [titulo]=titulos[0] categoria='Points'></app-card>
+  <app-card class="w-30 m-3" [titulo]=titulos[1] categoria='Rebounds'></app-card>
+  <app-card class="w-30 m-3" [titulo]=titulos[2] categoria='Assists'></app-card>
+  <app-card class="w-30 m-3" [titulo]=titulos[3] categoria='Steals'></app-card>
+  <app-card class="w-30 m-3" [titulo]=titulos[4] categoria='BlockedShots'></app-card>
+  <app-card class="w-30 m-3" [titulo]=titulos[5] categoria='Minutes'></app-card>
 </div>
