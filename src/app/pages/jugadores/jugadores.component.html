@@ -22,7 +22,8 @@
 
     <div *ngIf="jugadoresFiltrados.length>0" class="container">
       <h1>Lista de Jugadores</h1>
-      <table class="table table-bordered ">
+      <app-spinner *ngIf="loading" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
+      <table *ngIf="!loading" class="table table-bordered ">
         <tr class="bg-color">
           <th>#</th>
           <th>Nombre</th>
@@ -39,7 +40,7 @@
         </tr>
       </table>
 
-      <div class="pagination">
+      <div *ngIf="!loading" class="pagination">
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
 

@@ -6,16 +6,23 @@ import { SearchService } from 'src/app/services/search.service';
 import { FormsModule } from '@angular/forms';
 import { FiltrarComponent } from 'src/app/shared/components/filtrar/filtrar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
 
 @Component({
   standalone: true,
   selector: 'app-jugadores',
   templateUrl: './jugadores.component.html',
   styleUrls: ['./jugadores.component.css'],
-  imports: [CommonModule, FormsModule,FiltrarComponent, NgxPaginationModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    FiltrarComponent,
+    NgxPaginationModule,
+    SpinnerComponent,
+  ],
 })
 export class JugadoresComponent implements OnInit {
-  p:number = 1;
+  p: number = 1;
   jugadoresFiltrados: Jugador[];
   equipos: Equipo[];
   codigoEquipoSeleccionado: string;
@@ -23,6 +30,7 @@ export class JugadoresComponent implements OnInit {
   equipoSeleccionado: Equipo[];
   colorEquipo: string;
   rootElement: HTMLElement;
+  loading = true;
 
   constructor(private equipoService: SearchService) {
     this.jugadoresFiltrados = [];
@@ -40,37 +48,12 @@ export class JugadoresComponent implements OnInit {
 
   getJugadores(): void {
     this.equipoService
-    .obtenerTodosLosJugadoresActivos()
-    .subscribe((jugadoresBuscados) => {
-      this.jugadoresFiltrados = jugadoresBuscados;
-    });
-
-      // getEquipos(): void {
-      //   this.equipoService.obtenerEquiposActivos().subscribe((equipos) => {
-      //     this.equipos = equipos;
-      //   });
-      // }
-
-      // filtrarPorEquipo(): void {
-      //   this.equipoSeleccionado = this.equipos.filter(
-      //     (equipo) => equipo.Name === this.nombreEquipoSeleccionado
-      //   );
-      //   if (this.equipoSeleccionado[0] === undefined) {
-      //     this.codigoEquipoSeleccionado = this.equipos[0].Key;
-      //   } else {
-      //     this.codigoEquipoSeleccionado = this.equipoSeleccionado[0].Key;
-      //     this.colorEquipo = '#' + this.equipoSeleccionado[0].PrimaryColor;
-      //     this.rootElement.style.setProperty('--bgColor', this.colorEquipo);
-      //   }
-      //   this.getJugadores();
-      // }
+      .obtenerTodosLosJugadoresActivos()
+      .subscribe((jugadoresBuscados) => {
+        this.jugadoresFiltrados = jugadoresBuscados;
+        setTimeout(() => {
+          this.loading = false;
+        }, 1000);
+      });
   }
-
-  // getJugadores(): void {
-  //   this.equipoService
-  //     .obtenerJugadoresPorEquipo(this.codigoEquipoSeleccionado)
-  //     .subscribe((jugadoresBuscados) => {
-  //       this.jugadoresFiltrados = jugadoresBuscados;
-  //     });
-  // }
 }
