@@ -2,11 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
 import { StatsService } from '../../../services/stats.service';
-import { SearchService } from '../../../services/search.service';
-import { Equipo } from 'src/app/interfaces/equipo.interface';
-import { Jugador } from 'src/app/interfaces/jugador.interface';
-import { type } from 'ngx-bootstrap-icons';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,

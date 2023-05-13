@@ -2,8 +2,9 @@
   <h1>Filtrar Jugadores NBA</h1>
 
   <!-- <form class="form-group row align-items-end"> -->
-    <div class="col align-items-center">
-      <!-- <div *ngIf="jugadoresFiltrados.length==0">
+  <div class="col align-items-center">
+    <!-- TODO: tiene que irse a la pagina de mostrar información de cada equipo-->
+    <!-- <div *ngIf="jugadoresFiltrados.length==0">
         <h1>Seleccione un Equipo</h1>
       </div>
       <label for="conferenciaSelect">Equipo:</label>
@@ -14,30 +15,35 @@
       </select>
     </div> -->
     <app-filtrar class="col"></app-filtrar>
-  <!-- </form> -->
+    <!-- </form> -->
 
 
 
 
-  <div *ngIf="jugadoresFiltrados.length>0" class="container">
-    <h1>Lista de Jugadores</h1>
-    <table class="table table-bordered ">
-      <tr class="bg-color">
-        <th>#</th>
-        <th>Nombre</th>
-        <th>Apellidos</th>
-        <th>Posicion</th>
-        <th>Origen</th>
-      </tr>
-      <tr *ngFor="let jugador of jugadoresFiltrados">
-        <td>{{ jugador.Jersey }}</td>
-        <td>{{ jugador.FirstName }}</td>
-        <td>{{ jugador.LastName }}</td>
-        <td>{{ jugador.Position }}</td>
-        <td>{{ jugador.BirthCountry }}</td>
-      </tr>
-    </table>
+    <div *ngIf="jugadoresFiltrados.length>0" class="container">
+      <h1>Lista de Jugadores</h1>
+      <table class="table table-bordered ">
+        <tr class="bg-color">
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Posicion</th>
+          <th>Origen</th>
+        </tr>
+        <tr *ngFor="let jugador of jugadoresFiltrados | paginate: { itemsPerPage: 30, currentPage: p }">
+          <td>{{ jugador.Jersey }}</td>
+          <td>{{ jugador.FirstName }}</td>
+          <td>{{ jugador.LastName }}</td>
+          <td>{{ jugador.Position }}</td>
+          <td>{{ jugador.BirthCountry }}</td>
+        </tr>
+      </table>
+
+      <div class="pagination">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+
+    </div>
+
+
   </div>
-
-
-</div>

@@ -6,3 +6,7 @@
 .bg-color{
   background-color: var(--bgColor);
 }
+
+.pagination{
+  justify-content: center;
+}
