@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
 import { StatsService } from '../../../services/stats.service';
 import { RouterModule } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -15,6 +14,7 @@ import { BehaviorSubject } from 'rxjs';
   imports: [CommonModule, RouterModule],
 })
 export class CardComponent implements OnInit {
+  @Output() isLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();
   datosCargados = false;
   año: number;
   estadisticasJugadores: JugadorStats[];
@@ -42,15 +42,23 @@ export class CardComponent implements OnInit {
   }
 
   getTodasEstadisticas() {
+    console.log('cargados');
     this._statsService
       .obtenerTodasLasEstadisticasJugadores(this.año)
       .subscribe((jugadores) => {
         this.estadisticasJugadores = jugadores;
-        this.top5 = this.filtrarCincoMejoresCategoriaPorPartido(this.categoria);
-        this.mejorJugador = this.filtrarMejorJugadorCategoriaPorPartido(
-          this.categoria
-        );
-        this.datosCargados = true;
+        if (this.estadisticasJugadores.length > 0) {
+          this.top5 = this.filtrarCincoMejoresCategoriaPorPartido(
+            this.categoria
+          );
+          this.mejorJugador = this.filtrarMejorJugadorCategoriaPorPartido(
+            this.categoria
+          );
+          setTimeout(() => {
+            this.isLoaded.emit(true);
+            this.datosCargados = true;
+          }, 1500);
+        }
       });
   }
 
@@ -126,10 +134,10 @@ export class CardComponent implements OnInit {
     });
     return this.estadisticasJugadores[0];
   }
-  logoEquipo(jugador: JugadorStats): string{
+  logoEquipo(jugador: JugadorStats): string {
     let equipoID = jugador.TeamID;
     let equipo = this.equipos.find((e) => e.TeamID === equipoID);
-    if(equipo){
+    if (equipo) {
       return equipo.WikipediaLogoUrl;
     }
     return '';

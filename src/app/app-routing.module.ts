@@ -1,18 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { JugadoresComponent } from './pages/jugadores/jugadores.component';
-import { EquiposComponent } from './pages/equipos/equipos.component';
-import { MejoresJugadoresComponent } from './pages/mejores-jugadores/mejores-jugadores.component';
-import { MejoresEquiposComponent } from './pages/mejores-equipos/mejores-equipos.component';
-
 const routes: Routes = [
-  { path: 'stats/jugadores', component: JugadoresComponent },
-  { path: 'mejores/jugadores', component: MejoresJugadoresComponent },
-  { path: 'stats/equipos', component: EquiposComponent },
-  { path: 'mejores/equipos', component: MejoresEquiposComponent },
+  {
+    path: 'stats/jugadores',
+    loadComponent: () =>
+      import('./pages/jugadores/jugadores.component').then(
+        (m) => m.JugadoresComponent
+      ),
+  },
+  {
+    path: 'mejores/jugadores',
+    loadComponent: () =>
+      import('./pages/mejores-jugadores/mejores-jugadores.component').then(
+        (m) => m.MejoresJugadoresComponent
+      ),
+  },
+  {
+    path: 'stats/equipos',
+    loadComponent: () =>
+      import('./pages/equipos/equipos.component').then(
+        (m) => m.EquiposComponent
+      ),
+  },
+  {
+    path: 'mejores/equipos',
+    loadComponent: () =>
+      import('./pages/mejores-equipos/mejores-equipos.component').then(
+        (m) => m.MejoresEquiposComponent
+      ),
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
