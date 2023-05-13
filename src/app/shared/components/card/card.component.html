@@ -7,7 +7,7 @@
     <div class="col">
       <h3>1</h3>
     </div>
-    <div class="col"><img width="50px" src="{{logoEquipo(mejorJugador)}}" alt="logo">
+    <div class="col"><img width="50px" height="50px" src="{{logoEquipo(mejorJugador)}}" alt="logo">
     </div>
     <div class="col">
       <p class="m-0"><strong>
@@ -32,7 +32,7 @@
 
       <tr *ngFor="let jugador of top5;let i = index ">
         <td>{{jugador.Name}} </td>
-        <td><img width="30px" src="{{logoEquipo(jugador)}}" alt="logo"></td>
+        <td><img width="30px" height="30px" src="{{logoEquipo(jugador)}}" alt="logo"></td>
         <td>
           {{ getStats(jugador) | number:'.1-1'}}
         </td>
