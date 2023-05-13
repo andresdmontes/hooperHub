@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Equipo } from 'src/app/interfaces/equipo.interface';
+import { SearchService } from 'src/app/services/search.service';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { TarjetaComponent } from 'src/app/shared/components/tarjeta/tarjeta.component';
 
@@ -11,9 +13,12 @@ import { TarjetaComponent } from 'src/app/shared/components/tarjeta/tarjeta.comp
   imports: [CardComponent, CommonModule, TarjetaComponent],
 })
 export class MejoresJugadoresComponent implements OnInit {
+  equipos: Equipo[];
+
   titulos: string[];
 
-  constructor() {
+  constructor(private equipoService: SearchService) {
+    this.equipos = [];
     this.titulos = [
       'Puntos',
       'Rebotes',
@@ -23,6 +28,13 @@ export class MejoresJugadoresComponent implements OnInit {
       'Minutos',
     ];
   }
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getEquipos();
+  }
+
+  getEquipos(): void {
+    this.equipoService.obtenerEquiposActivos().subscribe((equipos) => {
+      this.equipos = equipos;
+    });
   }
 }

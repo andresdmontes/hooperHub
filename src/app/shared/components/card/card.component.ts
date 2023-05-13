@@ -3,6 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
 import { StatsService } from '../../../services/stats.service';
 import { RouterModule } from '@angular/router';
+import { SearchService } from 'src/app/services/search.service';
+import { Equipo } from 'src/app/interfaces/equipo.interface';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -12,14 +15,20 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule],
 })
 export class CardComponent implements OnInit {
+  datosCargados = false;
   año: number;
   estadisticasJugadores: JugadorStats[];
   mejorJugador: JugadorStats;
   top5: JugadorStats[];
   @Input() titulo: string;
   @Input() categoria: keyof JugadorStats;
+  @Input() equipos: Equipo[];
 
-  constructor(private statsService: StatsService) {
+  constructor(
+    private _statsService: StatsService,
+    private _searchService: SearchService
+  ) {
+    this.equipos = [];
     this.año = 2023;
     this.estadisticasJugadores = [];
     this.mejorJugador = this.estadisticasJugadores[0];
@@ -30,24 +39,23 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.getTodasEstadisticas();
-    console.log(this.estadisticasJugadores);
-    // this.asignarDatos();
   }
 
   getTodasEstadisticas() {
-    this.statsService
+    this._statsService
       .obtenerTodasLasEstadisticasJugadores(this.año)
       .subscribe((jugadores) => {
         this.estadisticasJugadores = jugadores;
         this.top5 = this.filtrarCincoMejoresCategoriaPorPartido(this.categoria);
-        this.mejorJugador = this.filtrarMejorJugadorCategoriaPorPartido(this.categoria);
+        this.mejorJugador = this.filtrarMejorJugadorCategoriaPorPartido(
+          this.categoria
+        );
+        this.datosCargados = true;
       });
   }
 
   asignarDatos() {
-    console.log(this.filtrarCincoMejoresCategoria(this.categoria));
     this.top5 = this.filtrarCincoMejoresCategoria(this.categoria);
-    // this.mejorJugador = this.filtrarMejorJugadorCategoria(this.categoria);
   }
 
   getStats(jugador: JugadorStats) {
@@ -59,7 +67,6 @@ export class CardComponent implements OnInit {
   }
 
   filtrarCincoMejoresCategoria<T extends keyof JugadorStats>(categoria: T) {
-    console.log(this.estadisticasJugadores);
     this.estadisticasJugadores.sort((a, b) => {
       if (typeof a[categoria] === 'number') {
         return (b[categoria] as number) - (a[categoria] as number);
@@ -118,5 +125,13 @@ export class CardComponent implements OnInit {
       }
     });
     return this.estadisticasJugadores[0];
+  }
+  logoEquipo(jugador: JugadorStats): string{
+    let equipoID = jugador.TeamID;
+    let equipo = this.equipos.find((e) => e.TeamID === equipoID);
+    if(equipo){
+      return equipo.WikipediaLogoUrl;
+    }
+    return '';
   }
 }
