@@ -27,15 +27,15 @@ export class MejoresJugadoresComponent implements OnInit, AfterViewInit {
   titulos: string[];
 
   constructor(private equipoService: SearchService) {
-    this.equipos = [];
-    (this.titulos = [
-      'Puntos',
-      'Rebotes',
-      'Asistencias',
-      'Robos',
-      'Tapones',
-      'Minutos',
-    ]),
+    (this.equipos = []),
+      (this.titulos = [
+        'Puntos',
+        'Rebotes',
+        'Asistencias',
+        'Robos',
+        'Tapones',
+        'Minutos',
+      ]),
       (this.isLoaded = false);
   }
   ngOnInit() {}
