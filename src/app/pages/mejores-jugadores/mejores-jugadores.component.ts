@@ -10,14 +10,13 @@ import { Equipo } from 'src/app/interfaces/equipo.interface';
 import { SearchService } from 'src/app/services/search.service';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
-import { TarjetaComponent } from 'src/app/shared/components/tarjeta/tarjeta.component';
 
 @Component({
   standalone: true,
   selector: 'app-mejores-jugadores',
   templateUrl: './mejores-jugadores.component.html',
   styleUrls: ['./mejores-jugadores.component.css'],
-  imports: [CardComponent, CommonModule, TarjetaComponent, SpinnerComponent],
+  imports: [CardComponent, CommonModule, SpinnerComponent],
 })
 export class MejoresJugadoresComponent implements OnInit, AfterViewInit {
   @ViewChildren(CardComponent) appCards!: QueryList<CardComponent>;
@@ -49,6 +48,8 @@ export class MejoresJugadoresComponent implements OnInit, AfterViewInit {
     });
   }
   datosCargados(evento: boolean) {
-    this.isLoaded = evento;
+    setTimeout(() => {
+      this.isLoaded = evento;
+    }, 1500);
   }
 }

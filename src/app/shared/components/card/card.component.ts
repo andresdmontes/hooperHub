@@ -57,10 +57,9 @@ export class CardComponent implements OnInit {
             this.categoria,
             this.estadisticasJugadores
           );
-        setTimeout(() => {
-          this.isLoaded.emit(true);
-          this.datosCargados = true;
-        }, 1750);
+
+        this.isLoaded.emit(true);
+        this.datosCargados = true;
       });
   }
 
