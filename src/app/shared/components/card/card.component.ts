@@ -70,12 +70,22 @@ export class CardComponent implements OnInit {
   getType() {
     return typeof this.mejorJugador[this.categoria];
   }
+  getEquipoPorJugador(jugador: JugadorStats): Equipo | undefined {
+    let equipoID = jugador.TeamID;
+    return this.equipos.find((e) => e.TeamID === equipoID);
+  }
 
   logoEquipo(jugador: JugadorStats): string {
-    let equipoID = jugador.TeamID;
-    let equipo = this.equipos.find((e) => e.TeamID === equipoID);
+    let equipo = this.getEquipoPorJugador(jugador);
     if (equipo) {
       return equipo.WikipediaLogoUrl;
+    }
+    return '';
+  }
+  siglasEquipo(jugador: JugadorStats): string {
+    let equipo = this.getEquipoPorJugador(jugador);
+    if (equipo) {
+      return equipo.Key;
     }
     return '';
   }
