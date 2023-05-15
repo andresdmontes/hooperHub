@@ -47,22 +47,20 @@ export class CardComponent implements OnInit {
       .obtenerTodasLasEstadisticasJugadores(this.año)
       .subscribe((jugadores) => {
         this.estadisticasJugadores = jugadores;
-        if (this.estadisticasJugadores.length > 0) {
-          this.top5 =
-            this._filterService.filtrarCincoMejoresCategoriaPorPartido(
-              this.categoria,
-              this.estadisticasJugadores
-            );
-          this.mejorJugador =
-            this._filterService.filtrarMejorJugadorCategoriaPorPartido(
-              this.categoria,
-              this.estadisticasJugadores
-            );
-          setTimeout(() => {
-            this.isLoaded.emit(true);
-            this.datosCargados = true;
-          }, 1500);
-        }
+
+        this.top5 = this._filterService.filtrarCincoMejoresCategoriaPorPartido(
+          this.categoria,
+          this.estadisticasJugadores
+        );
+        this.mejorJugador =
+          this._filterService.filtrarMejorJugadorCategoriaPorPartido(
+            this.categoria,
+            this.estadisticasJugadores
+          );
+        setTimeout(() => {
+          this.isLoaded.emit(true);
+          this.datosCargados = true;
+        }, 1750);
       });
   }
 
