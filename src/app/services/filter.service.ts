@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { JugadorStats } from '../interfaces/estadisticas.interface';
+import { SearchService } from './search.service';
+import { Equipo } from '../interfaces/equipo.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class FilterService {
@@ -72,5 +75,25 @@ export class FilterService {
       }
     });
     return estadisticasJugadores[0];
+  }
+
+  filtrarPorConferencia(
+    conferenciaSeleccionada: string,
+    equipos: Equipo[]
+  ): Equipo[] {
+    if (conferenciaSeleccionada === 'todas') {
+      return equipos;
+    } else {
+      return equipos.filter(
+        (equipo) => equipo.Conference === conferenciaSeleccionada
+      );
+    }
+  }
+
+  ordernarPorNombreDesc(equiposFiltrados: Equipo[]): Equipo[] {
+    return equiposFiltrados.sort((a, b) => a.Name.localeCompare(b.Name));
+  }
+  ordernarPorNombreAsc(equiposFiltrados: Equipo[]): Equipo[] {
+    return equiposFiltrados.sort((a, b) => b.Name.localeCompare(a.Name));
   }
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
+import { FilterService } from 'src/app/services/filter.service';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -19,7 +20,10 @@ export class EquiposComponent implements OnInit {
   conferencias: string[] = ['Eastern', 'Western', 'todas'];
   conferenciaSeleccionada: string = 'todas';
 
-  constructor(private equipoService: SearchService) {
+  constructor(
+    private equipoService: SearchService,
+    private _filterService: FilterService
+  ) {
     this.equipos = [];
     this.equiposFiltrados = [];
   }
@@ -35,22 +39,17 @@ export class EquiposComponent implements OnInit {
     });
   }
 
-  filtrarPorConferencia(): void {
-    if (this.conferenciaSeleccionada === 'todas') {
-      this.equiposFiltrados = this.equipos;
-    } else {
-      this.equiposFiltrados = this.equipos.filter(
-        (equipo) => equipo.Conference === this.conferenciaSeleccionada
-      );
-    }
+  filtrarPorConferencia() {
+    this.equiposFiltrados = this._filterService.filtrarPorConferencia(
+      this.conferenciaSeleccionada,
+      this.equipos
+    );
   }
 
-  ordernarPorNombreDesc(): void {
-    this.equiposFiltrados.sort((a, b) => a.Name.localeCompare(b.Name));
-    console.log(this.equiposFiltrados);
+  ordernarPorNombreDesc() {
+    this._filterService.ordernarPorNombreDesc(this.equiposFiltrados);
   }
-  ordernarPorNombreAsc(): void {
-    this.equiposFiltrados.sort((a, b) => b.Name.localeCompare(a.Name));
-    console.log(this.equiposFiltrados);
+  ordernarPorNombreAsc() {
+    this._filterService.ordernarPorNombreAsc(this.equiposFiltrados);
   }
 }

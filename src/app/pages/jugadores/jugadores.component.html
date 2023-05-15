@@ -1,4 +1,5 @@
-<div class="container">
+<app-spinner *ngIf="loading" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
+<div *ngIf="!loading" class="container">
   <h1>Filtrar Jugadores NBA</h1>
 
   <!-- <form class="form-group row align-items-end"> -->
@@ -22,8 +23,8 @@
 
     <div *ngIf="jugadoresFiltrados.length>0" class="container">
       <h1>Lista de Jugadores</h1>
-      <app-spinner *ngIf="loading" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
-      <table *ngIf="!loading" class="table table-bordered ">
+
+      <table  class="table table-bordered ">
         <tr class="bg-color">
           <th>#</th>
           <th>Nombre</th>
