@@ -5,6 +5,7 @@ import { StatsService } from '../../../services/stats.service';
 import { RouterModule } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   standalone: true,
@@ -26,7 +27,7 @@ export class CardComponent implements OnInit {
 
   constructor(
     private _statsService: StatsService,
-    private _searchService: SearchService
+    private _filterService: FilterService
   ) {
     this.equipos = [];
     this.año = 2023;
@@ -42,28 +43,27 @@ export class CardComponent implements OnInit {
   }
 
   getTodasEstadisticas() {
-    console.log('cargados');
     this._statsService
       .obtenerTodasLasEstadisticasJugadores(this.año)
       .subscribe((jugadores) => {
         this.estadisticasJugadores = jugadores;
         if (this.estadisticasJugadores.length > 0) {
-          this.top5 = this.filtrarCincoMejoresCategoriaPorPartido(
-            this.categoria
-          );
-          this.mejorJugador = this.filtrarMejorJugadorCategoriaPorPartido(
-            this.categoria
-          );
+          this.top5 =
+            this._filterService.filtrarCincoMejoresCategoriaPorPartido(
+              this.categoria,
+              this.estadisticasJugadores
+            );
+          this.mejorJugador =
+            this._filterService.filtrarMejorJugadorCategoriaPorPartido(
+              this.categoria,
+              this.estadisticasJugadores
+            );
           setTimeout(() => {
             this.isLoaded.emit(true);
             this.datosCargados = true;
           }, 1500);
         }
       });
-  }
-
-  asignarDatos() {
-    this.top5 = this.filtrarCincoMejoresCategoria(this.categoria);
   }
 
   getStats(jugador: JugadorStats) {
@@ -74,66 +74,6 @@ export class CardComponent implements OnInit {
     return typeof this.mejorJugador[this.categoria];
   }
 
-  filtrarCincoMejoresCategoria<T extends keyof JugadorStats>(categoria: T) {
-    this.estadisticasJugadores.sort((a, b) => {
-      if (typeof a[categoria] === 'number') {
-        return (b[categoria] as number) - (a[categoria] as number);
-      } else if (typeof a[categoria] === 'string') {
-        return (b[categoria] as string).localeCompare(a[categoria] as string);
-      } else {
-        return 0;
-      }
-    });
-    return this.estadisticasJugadores.slice(1, 5);
-  }
-
-  filtrarCincoMejoresCategoriaPorPartido<T extends keyof JugadorStats>(
-    categoria: T
-  ) {
-    this.estadisticasJugadores.sort((a, b) => {
-      if (typeof a[categoria] === 'number') {
-        return (
-          (b[categoria] as number) / b.Games -
-          (a[categoria] as number) / a.Games
-        );
-      } else if (typeof a[categoria] === 'string') {
-        return (b[categoria] as string).localeCompare(a[categoria] as string);
-      } else {
-        return 0;
-      }
-    });
-    return this.estadisticasJugadores.slice(1, 5);
-  }
-
-  filtrarMejorJugadorCategoria<T extends keyof JugadorStats>(categoria: T) {
-    this.estadisticasJugadores.sort((a, b) => {
-      if (typeof a[categoria] === 'number') {
-        return (b[categoria] as number) - (a[categoria] as number);
-      } else if (typeof a[categoria] === 'string') {
-        return (b[categoria] as string).localeCompare(a[categoria] as string);
-      } else {
-        return 0;
-      }
-    });
-    return this.estadisticasJugadores[0];
-  }
-  filtrarMejorJugadorCategoriaPorPartido<T extends keyof JugadorStats>(
-    categoria: T
-  ) {
-    this.estadisticasJugadores.sort((a, b) => {
-      if (typeof a[categoria] === 'number') {
-        return (
-          (b[categoria] as number) / b.Games -
-          (a[categoria] as number) / a.Games
-        );
-      } else if (typeof a[categoria] === 'string') {
-        return (b[categoria] as string).localeCompare(a[categoria] as string);
-      } else {
-        return 0;
-      }
-    });
-    return this.estadisticasJugadores[0];
-  }
   logoEquipo(jugador: JugadorStats): string {
     let equipoID = jugador.TeamID;
     let equipo = this.equipos.find((e) => e.TeamID === equipoID);
