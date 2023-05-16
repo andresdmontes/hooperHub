@@ -1,18 +1,33 @@
 <div class="container">
-
   <div class="d-flex">
-
     <div ngbDropdown class="dropdown d-inline-block">
-      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
         Conferencia
       </button>
       <div ngbDropdownMenu aria-labelledby=" dropdownBasic1">
-        <button ngbDropdownItem>Name <i class="bi bi-arrow-down"></i></button>
-        <button ngbDropdownItem>Name <i class="bi bi-arrow-up"></i></button>
+        <button (click)="filtrarConferencia('Eastern')" ngbDropdownItem>
+          Este
+        </button>
+        <button (click)="filtrarConferencia('Western')" ngbDropdownItem>
+          Oeste
+        </button>
+        <button (click)="filtrarConferencia('todas')" ngbDropdownItem>
+          Todas
+        </button>
       </div>
     </div>
     <div ngbDropdown class="dropdown d-inline-block">
-      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
         Equipo
       </button>
       <div ngbDropdownMenu aria-labelledby=" dropdownBasic1">
@@ -21,7 +36,12 @@
       </div>
     </div>
     <div ngbDropdown class="dropdown d-inline-block">
-      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
         Posicion
       </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -30,7 +50,12 @@
       </div>
     </div>
     <div ngbDropdown class="dropdown d-inline-block">
-      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
         Partidos Jugados
       </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -38,7 +63,5 @@
         <button ngbDropdownItem>Name <i class="bi bi-arrow-up"></i></button>
       </div>
     </div>
-
-
-
   </div>
+</div>

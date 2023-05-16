@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { FiltrarComponent } from 'src/app/shared/components/filtrar/filtrar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
+import { event } from 'jquery';
 
 @Component({
   standalone: true,
@@ -55,5 +56,9 @@ export class JugadoresComponent implements OnInit {
           this.loading = false;
         }, 1000);
       });
+  }
+
+  filtrarConferencia(event: Jugador[]) {
+    this.jugadoresFiltrados = event;
   }
 }

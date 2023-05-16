@@ -15,7 +15,7 @@
         <option *ngFor="let equipo of equipos"> {{equipo.Name}} </option>
       </select>
     </div> -->
-    <app-filtrar class="col"></app-filtrar>
+    <app-filtrar [selectedTeams]="jugadoresFiltrados" class="col" (filteredTeams)="filtrarConferencia($event)" ></app-filtrar>
     <!-- </form> -->
 
 

@@ -25,15 +25,6 @@ export class SearchService {
     return this.http.get<any[]>(this.baseApiUrl + 'teams?key=' + this.apiKey);
   }
 
-  obtenerEquiposPorConferencia(conferencia: string): Observable<Equipo[]> {
-    if (conferencia === 'todos') {
-      return this.obtenerEquiposActivos();
-    } else {
-      return this.http.get<any[]>(
-        `${this.baseApiUrl}&Conference=${conferencia}`
-      );
-    }
-  }
 
   obtenenerJugadorPorID(id: number): Observable<Jugador> {
     return this.http.get<Jugador>(
