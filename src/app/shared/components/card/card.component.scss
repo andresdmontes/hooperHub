@@ -1,5 +1,6 @@
-.tarjeta{
-  background-color: #99ccff;
+@import "../../../../assets/styles/_colors";
+.tarjeta {
+  background-color: $color-azul-claro;
   border-radius: 10px;
   margin: 30px auto;
   padding: 10px;

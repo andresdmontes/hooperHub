@@ -1,67 +1,34 @@
 <div class="container">
-  <div class="d-flex">
-    <div ngbDropdown class="dropdown d-inline-block">
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        id="dropdownBasic1"
-        ngbDropdownToggle
-      >
-        Conferencia
-      </button>
-      <div ngbDropdownMenu aria-labelledby=" dropdownBasic1">
-        <button (click)="filtrarConferencia('Eastern')" ngbDropdownItem>
-          Este
-        </button>
-        <button (click)="filtrarConferencia('Western')" ngbDropdownItem>
-          Oeste
-        </button>
-        <button (click)="filtrarConferencia('todas')" ngbDropdownItem>
-          Todas
-        </button>
-      </div>
-    </div>
-    <div ngbDropdown class="dropdown d-inline-block">
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        id="dropdownBasic1"
-        ngbDropdownToggle
-      >
-        Equipo
-      </button>
-      <div ngbDropdownMenu aria-labelledby=" dropdownBasic1">
-        <button ngbDropdownItem>Name <i class="bi bi-arrow-down"></i></button>
-        <button ngbDropdownItem>Name <i class="bi bi-arrow-up"></i></button>
-      </div>
-    </div>
-    <div ngbDropdown class="dropdown d-inline-block">
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        id="dropdownBasic1"
-        ngbDropdownToggle
-      >
-        Posicion
-      </button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem>Name <i class="bi bi-arrow-down"></i></button>
-        <button ngbDropdownItem>Name <i class="bi bi-arrow-up"></i></button>
-      </div>
-    </div>
-    <div ngbDropdown class="dropdown d-inline-block">
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        id="dropdownBasic1"
-        ngbDropdownToggle
-      >
-        Partidos Jugados
-      </button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem>Name <i class="bi bi-arrow-down"></i></button>
-        <button ngbDropdownItem>Name <i class="bi bi-arrow-up"></i></button>
-      </div>
-    </div>
-  </div>
+  <form class="d-flex" #form="ngForm">
+    <app-select
+      class="form-control"
+      [options]="conferences"
+      class="flex"
+      name="conference"
+      [(ngModel)]="conf"
+      placeholder="Conferencia"
+      (conference)="selectedConf($event)"
+    >
+    </app-select>
+    <app-select
+      class="form-control"
+      [options]="positions"
+      class="flex"
+      name="posicion"
+      [(ngModel)]="pos"
+      placeholder="Posicion"
+      (conference)="selectedPos($event)"
+    >
+    </app-select>
+    <app-select
+      class="form-control"
+      [options]="categories"
+      class="flex"
+      name="categoria"
+      [(ngModel)]="cat"
+      placeholder="Categoria"
+      (conference)="selectedCat($event)"
+    >
+    </app-select>
+  </form>
 </div>
