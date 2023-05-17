@@ -58,11 +58,7 @@ export class JugadoresComponent implements OnInit {
   conferenciaSeleccionada() {
     this.conferencia = this.filters.form.form.value['conference'];
     this.jugadoresFiltrados =
-      this._filterService.filtrarJugadoresPorConferencia(
-        this.conferencia,
-        this.jugadoresFiltrados
-      );
-    console.log(this.jugadoresFiltrados);
+      this._filterService.filtrarJugadoresPorConferencia(this.conferencia);
   }
   posicionSeleccionada() {
     this.posicion = this.filters.form.form.value['posicion'];

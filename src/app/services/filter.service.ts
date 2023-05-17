@@ -10,11 +10,18 @@ import { TestBed } from '@angular/core/testing';
 @Injectable({ providedIn: 'root' })
 export class FilterService {
   public equiposFiltrados: Equipo[] = [];
+  public jugadoresFiltrados: Jugador[] = [];
   constructor(private _searchService: SearchService) {}
 
   getEquipos(): void {
     this._searchService.equipos$.subscribe((equipos) => {
       this.equiposFiltrados = equipos;
+    });
+  }
+
+  getJugadores(): void {
+    this._searchService.jugadores$.subscribe((jugadoresBuscados) => {
+      this.jugadoresFiltrados = jugadoresBuscados;
     });
   }
 
@@ -107,27 +114,24 @@ export class FilterService {
     return equiposFiltrados.sort((a, b) => b.Name.localeCompare(a.Name));
   }
 
-  filtrarJugadoresPorConferencia(
-    conferenciaSeleccionada: string,
-    jugadores: Jugador[]
-  ): Jugador[] {
+  filtrarJugadoresPorConferencia(conferenciaSeleccionada: string): Jugador[] {
+    this.getJugadores();
     let filteredPlayers: Jugador[] = [];
     let equiposIds: number[] = [];
-    if (conferenciaSeleccionada === 'todas') {
-      return jugadores;
+    if (conferenciaSeleccionada === 'All') {
+      return this.jugadoresFiltrados;
     } else {
       this.getEquipos();
-      setTimeout(() => {
-        this.equiposFiltrados = this.filtrarEquipoPorConferencia(
-          conferenciaSeleccionada,
-          this.equiposFiltrados
-        );
-        equiposIds = this.equiposFiltrados.map((equipo) => equipo.TeamID); // Obtener un array de IDs de equipos
 
-        filteredPlayers = jugadores.filter((jugador) =>
-          equiposIds.includes(jugador.TeamID)
-        );
-      }, 2);
+      this.equiposFiltrados = this.filtrarEquipoPorConferencia(
+        conferenciaSeleccionada,
+        this.equiposFiltrados
+      );
+      equiposIds = this.equiposFiltrados.map((equipo) => equipo.TeamID); // Obtener un array de IDs de equipos
+      console.log(equiposIds);
+      filteredPlayers = this.jugadoresFiltrados.filter((jugador) =>
+        equiposIds.includes(jugador.TeamID)
+      );
     }
 
     return filteredPlayers;
