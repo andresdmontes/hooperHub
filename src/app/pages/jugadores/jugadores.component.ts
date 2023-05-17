@@ -33,7 +33,7 @@ export class JugadoresComponent implements OnInit {
   rootElement: HTMLElement;
   loading = true;
 
-  constructor(private equipoService: SearchService) {
+  constructor(private SearchService: SearchService) {
     this.jugadoresFiltrados = [];
     this.equipos = [];
     this.equipoSeleccionado = this.equipos;
@@ -47,15 +47,21 @@ export class JugadoresComponent implements OnInit {
     this.getJugadores();
   }
 
+  getEquipos() {
+    this.SearchService.obtenerEquiposActivos().subscribe((data) => {
+      this.equipos = data;
+    });
+  }
+
   getJugadores(): void {
-    this.equipoService
-      .obtenerTodosLosJugadoresActivos()
-      .subscribe((jugadoresBuscados) => {
+    this.SearchService.obtenerTodosLosJugadoresActivos().subscribe(
+      (jugadoresBuscados) => {
         this.jugadoresFiltrados = jugadoresBuscados;
         setTimeout(() => {
           this.loading = false;
         }, 1000);
-      });
+      }
+    );
   }
 
   filtrarConferencia(event: Jugador[]) {

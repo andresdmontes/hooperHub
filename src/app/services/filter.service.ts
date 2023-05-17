@@ -118,11 +118,12 @@ export class FilterService {
       return jugadores;
     } else {
       jugadores.forEach((j) => {
-        this.getTeamByPlayerID(j).subscribe((equipo: Equipo | undefined) => {
-          if (equipo && equipo.Conference === conferenciaSeleccionada) {
-            filteredPlayers.push(j);
-          }
-        });
+
+        // this.getTeamByPlayerID(j).subscribe((equipo: Equipo | undefined) => {
+        //   if (equipo && equipo.Conference === conferenciaSeleccionada) {
+        //     filteredPlayers.push(j);
+        //   }
+        // });
       });
     }
 
