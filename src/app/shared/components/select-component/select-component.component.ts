@@ -78,7 +78,7 @@ export class SelectRoleComponent extends ValidateInput implements AfterViewInit 
         this.writeValue(option);
         this.error = false;
       }
-    }, 0);
+    }, 50);
   }
 
   /**

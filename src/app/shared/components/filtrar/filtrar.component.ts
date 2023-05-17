@@ -1,7 +1,14 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { SelectRoleComponent } from '../select-component/select-component.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 
 @Component({
   standalone: true,
@@ -12,6 +19,10 @@ import { FormsModule, NgModel } from '@angular/forms';
 })
 export class FiltrarComponent {
   @ViewChildren(NgModel) models!: QueryList<NgModel>;
+  @ViewChild(NgForm) form!: NgForm;
+  @Output() confSelected = new EventEmitter<void>();
+  @Output() posSelected = new EventEmitter<void>();
+  @Output() catSelected = new EventEmitter<void>();
   public conf: string;
   public pos: string;
   public cat: string;
@@ -28,7 +39,13 @@ export class FiltrarComponent {
     this.categories = ['Points', 'Rebounds', 'Assists', 'Steals'];
   }
 
-  selectedConf($event: Event) {}
-  selectedPos($event: Event) {}
-  selectedCat($event: Event) {}
+  selectedConf() {
+    this.confSelected.emit();
+  }
+  selectedPos() {
+    this.posSelected.emit();
+  }
+  selectedCat() {
+    this.catSelected.emit();
+  }
 }

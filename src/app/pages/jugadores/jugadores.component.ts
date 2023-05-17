@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
 import { Jugador } from 'src/app/interfaces/jugador.interface';
 import { SearchService } from 'src/app/services/search.service';
@@ -23,34 +23,23 @@ import { event } from 'jquery';
   ],
 })
 export class JugadoresComponent implements OnInit {
-  p: number = 1;
-  jugadoresFiltrados: Jugador[];
-  equipos: Equipo[];
-  codigoEquipoSeleccionado: string;
-  nombreEquipoSeleccionado: string;
-  equipoSeleccionado: Equipo[];
-  colorEquipo: string;
-  rootElement: HTMLElement;
-  loading = true;
+  @ViewChild(FiltrarComponent) filters!: FiltrarComponent;
+  public p: number = 1;
+  public jugadoresFiltrados: Jugador[];
+  public loading = true;
+  public conferencia: string;
+  public posicion: string;
+  public categoria: string;
 
   constructor(private SearchService: SearchService) {
     this.jugadoresFiltrados = [];
-    this.equipos = [];
-    this.equipoSeleccionado = this.equipos;
-    this.nombreEquipoSeleccionado = '';
-    this.codigoEquipoSeleccionado = '';
-    this.colorEquipo = '';
-    this.rootElement = document.documentElement;
+    this.conferencia = '';
+    this.posicion = '';
+    this.categoria = '';
   }
 
   ngOnInit() {
     this.getJugadores();
-  }
-
-  getEquipos() {
-    this.SearchService.obtenerEquiposActivos().subscribe((data) => {
-      this.equipos = data;
-    });
   }
 
   getJugadores(): void {
@@ -64,7 +53,16 @@ export class JugadoresComponent implements OnInit {
     );
   }
 
-  filtrarConferencia(event: Jugador[]) {
-    this.jugadoresFiltrados = event;
+  conferenciaSeleccionada() {
+    this.conferencia = this.filters.form.form.value['conference'];
+    console.log(this.conferencia);
+  }
+  posicionSeleccionada() {
+    this.posicion = this.filters.form.form.value['posicion'];
+    console.log(this.posicion);
+  }
+  categoriaSeleccionada() {
+    this.categoria = this.filters.form.form.value['categoria'];
+    console.log(this.categoria);
   }
 }
