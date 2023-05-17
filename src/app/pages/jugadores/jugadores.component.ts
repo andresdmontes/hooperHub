@@ -62,6 +62,7 @@ export class JugadoresComponent implements OnInit {
   }
   posicionSeleccionada() {
     this.posicion = this.filters.form.form.value['posicion'];
+    this.jugadoresFiltrados = this._filterService.filtrarJugadoresPorPosiciones(this.posicion)
     console.log(this.posicion);
   }
   categoriaSeleccionada() {

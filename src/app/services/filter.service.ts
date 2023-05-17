@@ -143,4 +143,24 @@ export class FilterService {
   ordernarJugadoresPorNombreAsc(equiposFiltrados: Equipo[]): Equipo[] {
     return equiposFiltrados.sort((a, b) => b.Name.localeCompare(a.Name));
   }
+
+  filtrarJugadoresPorPosiciones(posicion: string) {
+    this.getJugadores();
+    let filtrar: Jugador[] = [];
+    if (posicion === 'G') {
+      filtrar = this.jugadoresFiltrados.filter(
+        (jugador) => jugador.Position == 'PG' || jugador.Position === 'SG'
+      );
+      console.log(filtrar);
+    } else if (posicion === 'F') {
+      filtrar = this.jugadoresFiltrados.filter(
+        (jugador) => jugador.Position == 'SF' || jugador.Position === 'PF'
+      );
+    } else {
+      filtrar = this.jugadoresFiltrados.filter((jugador) =>
+        jugador.Position.includes(posicion)
+      );
+    }
+    return filtrar;
+  }
 }
