@@ -1,0 +1,18 @@
+
+.ctn-role{
+  position: relative;
+
+  .dropdown{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10;
+    left: 0;
+    background-color: beige;
+    input{
+      cursor: pointer;
+      margin: 10px 0;
+    }
+  }
+  
+}

@@ -1,26 +1,33 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { Jugador } from 'src/app/interfaces/jugador.interface';
-import { FilterService } from 'src/app/services/filter.service';
+import { Component } from '@angular/core';
+import { SelectRoleComponent } from '../select-component/select-component.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   selector: 'app-filtrar',
   templateUrl: './filtrar.component.html',
   styleUrls: ['./filtrar.component.css'],
-  imports: [NgbDropdownModule],
+  imports: [SelectRoleComponent, CommonModule, FormsModule],
 })
 export class FiltrarComponent {
-  @Output() filteredTeams: EventEmitter<Jugador[]> = new EventEmitter<
-    Jugador[]
-  >();
-  @Input() selectedTeams: Jugador[] = [];
+  public conf: string;
+  public pos: string;
+  public cat: string;
+  public conferences: string[];
+  public positions: string[];
+  public categories: string[];
 
-  constructor(private _filterService: FilterService) {}
-
-  filtrarConferencia(id: string) {
-    this.filteredTeams.emit(
-      this._filterService.filtrarJugadoresPorConferencia(id, this.selectedTeams)
-    );
+  constructor() {
+    this.conf = '';
+    this.pos = '';
+    this.cat = '';
+    this.conferences = ['Eastern', 'Western', 'All'];
+    this.positions = ['G', 'PG', 'SG', 'F', 'SF', 'PF', 'C'];
+    this.categories = ['Points', 'Rebounds', 'Assists', 'Steals'];
   }
+
+  selectedConf($event: Event) {}
+  selectedPos($event: Event) {}
+  selectedCat($event: Event) {}
 }

@@ -1,0 +1,10 @@
+<div class="ctn-role">
+  <input readonly [required]="required" [(ngModel)]="value" (click)="toggleMenu()" (ngModelChange)="onChange($event)"
+    (blur)="onTouched()" [placeholder]="placeholder">
+
+  <span *ngIf="error">{{errorMsg}}</span>
+  <div *ngIf="isMenuOpen" class="dropdown">
+    <input *ngFor="let option of options" [required]="required" (click)="selectOption(option)" [readonly]="true"
+      name={{option}} value={{option}}>
+  </div>
+</div>
