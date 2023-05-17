@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailsComponent } from './pages/details/details.component';
 const routes: Routes = [
   {
     path: 'stats/jugadores',
@@ -21,6 +22,10 @@ const routes: Routes = [
       import('./pages/equipos/equipos.component').then(
         (m) => m.EquiposComponent
       ),
+  },
+  {
+    path: 'equipos/details',
+    component: DetailsComponent,
   },
   {
     path: 'mejores/equipos',

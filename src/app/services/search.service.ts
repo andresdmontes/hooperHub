@@ -32,7 +32,7 @@ export class SearchService {
 
   obtenerTodosLosEquipos(): Observable<Equipo[]> {
     return this.http.get<any[]>(
-      this.baseApiUrl + 'AllTeams?key=' + this.apiKey
+      this.baseApiUrl + 'teams?key=' + this.apiKey
     );
   }
 

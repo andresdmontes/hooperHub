@@ -115,7 +115,9 @@ export class FilterService {
     return equiposFiltrados.sort((a, b) => b.Name.localeCompare(a.Name));
   }
 
-  filtrarJugadoresPorConferencia(conferenciaSeleccionada: string): JugadorStats[] {
+  filtrarJugadoresPorConferencia(
+    conferenciaSeleccionada: string
+  ): JugadorStats[] {
     this.getJugadores();
     let filteredPlayers: JugadorStats[] = [];
     let equiposIds: number[] = [];
@@ -136,13 +138,6 @@ export class FilterService {
     }
 
     return filteredPlayers;
-  }
-
-  ordernarJugadoresPorNombreDesc(equiposFiltrados: Equipo[]): Equipo[] {
-    return equiposFiltrados.sort((a, b) => a.Name.localeCompare(b.Name));
-  }
-  ordernarJugadoresPorNombreAsc(equiposFiltrados: Equipo[]): Equipo[] {
-    return equiposFiltrados.sort((a, b) => b.Name.localeCompare(a.Name));
   }
 
   filtrarJugadoresPorPosiciones(posicion: string) {

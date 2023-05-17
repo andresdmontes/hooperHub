@@ -1,9 +1,9 @@
+import { Equipo } from './../../interfaces/equipo.interface';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { Equipo } from 'src/app/interfaces/equipo.interface';
 import { FilterService } from 'src/app/services/filter.service';
 import { SearchService } from 'src/app/services/search.service';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
@@ -30,7 +30,8 @@ export class EquiposComponent implements OnInit {
 
   constructor(
     private equipoService: SearchService,
-    private _filterService: FilterService
+    private _filterService: FilterService,
+    private _router: Router
   ) {
     this.equipos = [];
     this.equiposFiltrados = [];
@@ -62,5 +63,9 @@ export class EquiposComponent implements OnInit {
   }
   ordernarPorNombreAsc() {
     this._filterService.ordernarEquipoPorNombreAsc(this.equiposFiltrados);
+  }
+  gotoRoute(equipo: Equipo) {
+    const extras = { state: { id: equipo.TeamID } };
+    this._router.navigateByUrl('/equipos/details', extras);
   }
 }

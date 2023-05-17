@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { FiltrarComponent } from './shared/components/filtrar/filtrar.component';
 @NgModule({
   declarations: [AppComponent],
   imports: [
