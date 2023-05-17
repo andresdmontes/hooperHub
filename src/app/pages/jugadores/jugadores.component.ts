@@ -9,6 +9,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
 import { event } from 'jquery';
 import { FilterService } from 'src/app/services/filter.service';
+import { StatsService } from 'src/app/services/stats.service';
+import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
 
 @Component({
   standalone: true,
@@ -26,7 +28,7 @@ import { FilterService } from 'src/app/services/filter.service';
 export class JugadoresComponent implements OnInit {
   @ViewChild(FiltrarComponent) filters!: FiltrarComponent;
   public p: number = 1;
-  public jugadoresFiltrados: Jugador[];
+  public jugadoresFiltrados: JugadorStats[];
   public loading = true;
   public conferencia: string;
   public posicion: string;
@@ -34,7 +36,8 @@ export class JugadoresComponent implements OnInit {
 
   constructor(
     private SearchService: SearchService,
-    private _filterService: FilterService
+    private _filterService: FilterService,
+    private _playerStats: StatsService
   ) {
     this.jugadoresFiltrados = [];
     this.conferencia = '';
@@ -47,7 +50,7 @@ export class JugadoresComponent implements OnInit {
   }
 
   getJugadores(): void {
-    this.SearchService.jugadores$.subscribe((jugadoresBuscados) => {
+    this._playerStats.jugadores$.subscribe((jugadoresBuscados) => {
       this.jugadoresFiltrados = jugadoresBuscados;
       setTimeout(() => {
         this.loading = false;

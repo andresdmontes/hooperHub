@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { JugadorStats } from '../interfaces/estadisticas.interface';
 import { SearchService } from './search.service';
 import { Equipo } from '../interfaces/equipo.interface';
-import { Observable, map } from 'rxjs';
 import { Jugador } from '../interfaces/jugador.interface';
-import { get } from 'jquery';
-import { TestBed } from '@angular/core/testing';
+import { StatsService } from './stats.service';
 
 @Injectable({ providedIn: 'root' })
 export class FilterService {
   public equiposFiltrados: Equipo[] = [];
-  public jugadoresFiltrados: Jugador[] = [];
-  constructor(private _searchService: SearchService) {}
+  public jugadoresFiltrados: JugadorStats[] = [];
+  constructor(
+    private _searchService: SearchService,
+    private _statService: StatsService
+  ) {}
 
   getEquipos(): void {
     this._searchService.equipos$.subscribe((equipos) => {
@@ -20,7 +21,7 @@ export class FilterService {
   }
 
   getJugadores(): void {
-    this._searchService.jugadores$.subscribe((jugadoresBuscados) => {
+    this._statService.jugadores$.subscribe((jugadoresBuscados) => {
       this.jugadoresFiltrados = jugadoresBuscados;
     });
   }
@@ -114,9 +115,9 @@ export class FilterService {
     return equiposFiltrados.sort((a, b) => b.Name.localeCompare(a.Name));
   }
 
-  filtrarJugadoresPorConferencia(conferenciaSeleccionada: string): Jugador[] {
+  filtrarJugadoresPorConferencia(conferenciaSeleccionada: string): JugadorStats[] {
     this.getJugadores();
-    let filteredPlayers: Jugador[] = [];
+    let filteredPlayers: JugadorStats[] = [];
     let equiposIds: number[] = [];
     if (conferenciaSeleccionada === 'All') {
       return this.jugadoresFiltrados;
@@ -146,7 +147,7 @@ export class FilterService {
 
   filtrarJugadoresPorPosiciones(posicion: string) {
     this.getJugadores();
-    let filtrar: Jugador[] = [];
+    let filtrar: JugadorStats[] = [];
     if (posicion === 'G') {
       filtrar = this.jugadoresFiltrados.filter(
         (jugador) => jugador.Position == 'PG' || jugador.Position === 'SG'

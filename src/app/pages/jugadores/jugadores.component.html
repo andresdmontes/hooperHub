@@ -17,18 +17,23 @@
 
     <table class="table table-bordered ">
       <tr class="bg-color">
-        <th>#</th>
         <th>Nombre</th>
-        <th>Apellidos</th>
         <th>Posicion</th>
-        <th>Origen</th>
+        <th>Puntos</th>
+        <th>Rebotes</th>
+        <th>Asistencias</th>
+        <th>Steals</th>
+        <th>Blocks
+        <th>
       </tr>
       <tr *ngFor="let jugador of jugadoresFiltrados | paginate: { itemsPerPage: 30, currentPage: p }">
-        <td>{{ jugador.Jersey }}</td>
-        <td>{{ jugador.FirstName }}</td>
-        <td>{{ jugador.LastName }}</td>
-        <td>{{ jugador.Position }}</td>
-        <td>{{ jugador.BirthCountry }}</td>
+        <td>{{ jugador.Name }}</td>
+        <td>{{ jugador.Position  }}</td>
+        <td>{{ jugador.Points }}</td>
+        <td>{{ jugador.Rebounds }}</td>
+        <td>{{ jugador.Assists }}</td>
+        <td>{{ jugador.Steals }}</td>
+        <td>{{ jugador.BlockedShots }}</td>
       </tr>
     </table>
 
