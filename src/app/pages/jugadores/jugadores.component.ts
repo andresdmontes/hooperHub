@@ -8,6 +8,7 @@ import { FiltrarComponent } from 'src/app/shared/components/filtrar/filtrar.comp
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
 import { event } from 'jquery';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   standalone: true,
@@ -31,7 +32,10 @@ export class JugadoresComponent implements OnInit {
   public posicion: string;
   public categoria: string;
 
-  constructor(private SearchService: SearchService) {
+  constructor(
+    private SearchService: SearchService,
+    private _filterService: FilterService
+  ) {
     this.jugadoresFiltrados = [];
     this.conferencia = '';
     this.posicion = '';
@@ -43,19 +47,22 @@ export class JugadoresComponent implements OnInit {
   }
 
   getJugadores(): void {
-    this.SearchService.obtenerTodosLosJugadoresActivos().subscribe(
-      (jugadoresBuscados) => {
-        this.jugadoresFiltrados = jugadoresBuscados;
-        setTimeout(() => {
-          this.loading = false;
-        }, 1000);
-      }
-    );
+    this.SearchService.jugadores$.subscribe((jugadoresBuscados) => {
+      this.jugadoresFiltrados = jugadoresBuscados;
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000);
+    });
   }
 
   conferenciaSeleccionada() {
     this.conferencia = this.filters.form.form.value['conference'];
-    console.log(this.conferencia);
+    this.jugadoresFiltrados =
+      this._filterService.filtrarJugadoresPorConferencia(
+        this.conferencia,
+        this.jugadoresFiltrados
+      );
+    console.log(this.jugadoresFiltrados);
   }
   posicionSeleccionada() {
     this.posicion = this.filters.form.form.value['posicion'];

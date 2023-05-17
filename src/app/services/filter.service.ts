@@ -5,19 +5,17 @@ import { Equipo } from '../interfaces/equipo.interface';
 import { Observable, map } from 'rxjs';
 import { Jugador } from '../interfaces/jugador.interface';
 import { get } from 'jquery';
+import { TestBed } from '@angular/core/testing';
 
 @Injectable({ providedIn: 'root' })
 export class FilterService {
+  public equiposFiltrados: Equipo[] = [];
   constructor(private _searchService: SearchService) {}
 
-  getTeamByPlayerID(jugador: Jugador): Observable<Equipo | undefined> {
-    return this._searchService
-      .obtenerTodosLosEquipos()
-      .pipe(
-        map((equipos: Equipo[]) =>
-          equipos.find((equipo) => equipo.TeamID === jugador.TeamID)
-        )
-      );
+  getEquipos(): void {
+    this._searchService.equipos$.subscribe((equipos) => {
+      this.equiposFiltrados = equipos;
+    });
   }
 
   filtrarCincoMejoresCategoria<T extends keyof JugadorStats>(
@@ -114,17 +112,22 @@ export class FilterService {
     jugadores: Jugador[]
   ): Jugador[] {
     let filteredPlayers: Jugador[] = [];
+    let equiposIds: number[] = [];
     if (conferenciaSeleccionada === 'todas') {
       return jugadores;
     } else {
-      jugadores.forEach((j) => {
+      this.getEquipos();
+      setTimeout(() => {
+        this.equiposFiltrados = this.filtrarEquipoPorConferencia(
+          conferenciaSeleccionada,
+          this.equiposFiltrados
+        );
+        equiposIds = this.equiposFiltrados.map((equipo) => equipo.TeamID); // Obtener un array de IDs de equipos
 
-        // this.getTeamByPlayerID(j).subscribe((equipo: Equipo | undefined) => {
-        //   if (equipo && equipo.Conference === conferenciaSeleccionada) {
-        //     filteredPlayers.push(j);
-        //   }
-        // });
-      });
+        filteredPlayers = jugadores.filter((jugador) =>
+          equiposIds.includes(jugador.TeamID)
+        );
+      }, 2);
     }
 
     return filteredPlayers;
