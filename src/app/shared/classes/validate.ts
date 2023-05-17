@@ -5,6 +5,15 @@ import { ValueAccessorBase } from './valueaccessorbase';
  */
 export abstract class ValidateInput extends ValueAccessorBase {
   /**
+   * @description sets valitadors to a model
+   * @param model Ngmodel instance
+   * @param required atrribute to add
+   * @param pattern atrribute to add
+   */
+  setValidators(model: NgModel, required?: boolean, pattern?: string): void {
+    model.control.setValidators(this.getValidators(required, pattern));
+  }
+  /**
    * @description creates validator object with the input needs
    * @param required atrribute to add
    * @param pattern atrribute to add
@@ -19,15 +28,6 @@ export abstract class ValidateInput extends ValueAccessorBase {
       validators.push(Validators.pattern(pattern));
     }
     return validators;
-  }
-  /**
-   * @description sets valitadors to a model
-   * @param model Ngmodel instance
-   * @param required atrribute to add
-   * @param pattern atrribute to add
-   */
-  setValidators(model: NgModel, required?: boolean, pattern?: string): void {
-    model.control.setValidators(this.getValidators(required, pattern));
   }
   /**
    * @description validates a model

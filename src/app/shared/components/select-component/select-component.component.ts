@@ -52,7 +52,6 @@ export class SelectRoleComponent extends ValidateInput implements AfterViewInit 
    *@description gets validators for this class from extended class
    */
   ngAfterViewInit(): void {
-    this.model.name = this.name;
     this.setValidators(this.model, this.required);
   }
 
@@ -71,17 +70,15 @@ export class SelectRoleComponent extends ValidateInput implements AfterViewInit 
     this.value = option;
     this.toggleMenu();
     this.onChange(option);
-    this.isMenuOpen = false;
-    this.onTouched();
-    this.rolSelect.emit(option);
     setTimeout(() => {
       if (this.validate(this.model) != null) {
         this.error = true;
         this.errorMsg = this.validate(this.model);
       } else {
+        this.writeValue(option);
         this.error = false;
       }
-    }, 50);
+    }, 0);
   }
 
   /**

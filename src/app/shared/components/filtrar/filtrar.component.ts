@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 import { SelectRoleComponent } from '../select-component/select-component.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
   standalone: true,
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   imports: [SelectRoleComponent, CommonModule, FormsModule],
 })
 export class FiltrarComponent {
+  @ViewChildren(NgModel) models!: QueryList<NgModel>;
   public conf: string;
   public pos: string;
   public cat: string;
