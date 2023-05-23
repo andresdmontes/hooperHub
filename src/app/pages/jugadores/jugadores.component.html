@@ -1,47 +1,22 @@
-<app-spinner *ngIf="loading" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
+<app-spinner
+  *ngIf="loading"
+  class="spinner position-absolute top-50 start-50 translate-middle"
+></app-spinner>
 <div *ngIf="!loading" class="container">
   <h1>Filtrar Jugadores NBA</h1>
 
-  <div class="col align-items-center">
+  <div class="col align-items-center"></div>
+  <app-filtrar
+    #filters
+    (catSelected)="categoriaSeleccionada()"
+    (confSelected)="conferenciaSeleccionada()"
+    (posSelected)="posicionSeleccionada()"
+    class="col"
+  ></app-filtrar>
 
+  <div *ngIf="jugadoresFiltrados.length > 0" class="container">
+    <app-player-table
+      [jugadoresFiltrados]="jugadoresFiltrados"
+    ></app-player-table>
   </div>
-  <app-filtrar #filters (catSelected)="categoriaSeleccionada()" (confSelected)="conferenciaSeleccionada()"
-    (posSelected)="posicionSeleccionada()" class="col"></app-filtrar>
-
-
-
-
-
-  <div *ngIf="jugadoresFiltrados.length>0" class="container">
-    <h1>Lista de Jugadores</h1>
-
-    <table class="table table-bordered ">
-      <tr class="bg-color">
-        <th>Nombre</th>
-        <th>Posicion</th>
-        <th>Puntos</th>
-        <th>Rebotes</th>
-        <th>Asistencias</th>
-        <th>Steals</th>
-        <th>Blocks
-        <th>
-      </tr>
-      <tr *ngFor="let jugador of jugadoresFiltrados | paginate: { itemsPerPage: 30, currentPage: p }">
-        <td>{{ jugador.Name }}</td>
-        <td>{{ jugador.Position  }}</td>
-        <td>{{ jugador.Points }}</td>
-        <td>{{ jugador.Rebounds }}</td>
-        <td>{{ jugador.Assists }}</td>
-        <td>{{ jugador.Steals }}</td>
-        <td>{{ jugador.BlockedShots }}</td>
-      </tr>
-    </table>
-
-    <div *ngIf="!loading" class="pagination">
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
-
-  </div>
-
-
 </div>

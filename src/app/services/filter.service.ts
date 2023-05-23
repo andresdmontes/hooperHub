@@ -25,6 +25,21 @@ export class FilterService {
       this.jugadoresFiltrados = jugadoresBuscados;
     });
   }
+  filtrarMejoresCategoria<T extends keyof JugadorStats>(
+    categoria: T,
+    estadisticasJugadores: JugadorStats[]
+  ) {
+    estadisticasJugadores.sort((a, b) => {
+      if (typeof a[categoria] === 'number') {
+        return (b[categoria] as number) - (a[categoria] as number);
+      } else if (typeof a[categoria] === 'string') {
+        return (b[categoria] as string).localeCompare(a[categoria] as string);
+      } else {
+        return 0;
+      }
+    });
+    return estadisticasJugadores;
+  }
 
   filtrarCincoMejoresCategoria<T extends keyof JugadorStats>(
     categoria: T,

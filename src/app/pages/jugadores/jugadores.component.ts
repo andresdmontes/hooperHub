@@ -11,6 +11,7 @@ import { event } from 'jquery';
 import { FilterService } from 'src/app/services/filter.service';
 import { StatsService } from 'src/app/services/stats.service';
 import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
+import { PlayerTableComponent } from 'src/app/shared/components/player-table/player-table.component';
 
 @Component({
   standalone: true,
@@ -23,11 +24,12 @@ import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
     FiltrarComponent,
     NgxPaginationModule,
     SpinnerComponent,
+    PlayerTableComponent
   ],
 })
 export class JugadoresComponent implements OnInit {
   @ViewChild(FiltrarComponent) filters!: FiltrarComponent;
-  public p: number = 1;
+
   public jugadoresFiltrados: JugadorStats[];
   public loading = true;
   public conferencia: string;
