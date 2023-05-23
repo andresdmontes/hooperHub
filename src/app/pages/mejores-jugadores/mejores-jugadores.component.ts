@@ -38,18 +38,11 @@ export class MejoresJugadoresComponent implements OnInit, AfterViewInit {
       (this.isLoaded = false);
   }
   ngOnInit() {}
-  ngAfterViewInit() {
-    this.getEquipos();
-  }
+  ngAfterViewInit() {}
 
-  getEquipos(): void {
-    this.equipoService.obtenerEquiposActivos().subscribe((equipos) => {
-      this.equipos = equipos;
-    });
-  }
   datosCargados(evento: boolean) {
     setTimeout(() => {
       this.isLoaded = evento;
-    }, 1500);
+    }, 1000);
   }
 }
