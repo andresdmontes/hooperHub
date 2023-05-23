@@ -18,6 +18,7 @@ export class CardComponent implements OnInit {
   @Output() isLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();
   datosCargados = false;
   año: number;
+  equipos: Equipo[];
   estadisticasJugadores: JugadorStats[];
   mejorJugador: JugadorStats;
   top5: JugadorStats[];
@@ -71,7 +72,8 @@ export class CardComponent implements OnInit {
   }
   getEquipoPorJugador(jugador: JugadorStats): Equipo | undefined {
     let equipoID = jugador.TeamID;
-    return this.equipos.find((e) => e.TeamID === equipoID);
+    // return this.equipos.find((e) => e.TeamID === equipoID);
+    return undefined
   }
 
   logoEquipo(jugador: JugadorStats): string {

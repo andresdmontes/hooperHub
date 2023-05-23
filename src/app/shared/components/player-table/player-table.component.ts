@@ -14,12 +14,14 @@ import { FilterService } from 'src/app/services/filter.service';
 export class PlayerTableComponent {
   @Input() jugadoresFiltrados!: JugadorStats[];
   public p: number = 1;
-
+  public orderAsc: boolean = true;
   constructor(private readonly _filter: FilterService) {}
 
   public toggle(categoria: keyof JugadorStats) {
-    console.log(
-      this._filter.filtrarMejoresCategoria(categoria, this.jugadoresFiltrados).slice(0,5)
+    this.jugadoresFiltrados = this._filter.filtrarMejoresCategoria(
+      categoria,
+      this.orderAsc
     );
+    this.orderAsc = !this.orderAsc;
   }
 }

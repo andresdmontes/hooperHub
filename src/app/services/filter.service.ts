@@ -27,18 +27,31 @@ export class FilterService {
   }
   filtrarMejoresCategoria<T extends keyof JugadorStats>(
     categoria: T,
-    estadisticasJugadores: JugadorStats[]
-  ) {
-    estadisticasJugadores.sort((a, b) => {
-      if (typeof a[categoria] === 'number') {
-        return (b[categoria] as number) - (a[categoria] as number);
-      } else if (typeof a[categoria] === 'string') {
-        return (b[categoria] as string).localeCompare(a[categoria] as string);
-      } else {
-        return 0;
-      }
-    });
-    return estadisticasJugadores;
+    ascending: boolean
+  ): JugadorStats[] {
+    this.getJugadores();
+    if (ascending) {
+      this.jugadoresFiltrados.sort((a, b) => {
+        if (typeof a[categoria] === 'number') {
+          return (b[categoria] as number) - (a[categoria] as number);
+        } else if (typeof a[categoria] === 'string') {
+          return (b[categoria] as string).localeCompare(a[categoria] as string);
+        } else {
+          return 0;
+        }
+      });
+    } else {
+      this.jugadoresFiltrados.sort((a, b) => {
+        if (typeof a[categoria] === 'number') {
+          return (a[categoria] as number) - (b[categoria] as number);
+        } else if (typeof a[categoria] === 'string') {
+          return (a[categoria] as string).localeCompare(b[categoria] as string);
+        } else {
+          return 0;
+        }
+      });
+    }
+    return this.jugadoresFiltrados;
   }
 
   filtrarCincoMejoresCategoria<T extends keyof JugadorStats>(

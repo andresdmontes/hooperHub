@@ -1,11 +1,32 @@
 <form class="d-flex" #form="ngForm">
-  <app-select class="form-control" [options]="conferences" class="flex" name="conference" [(ngModel)]="conf"
-    placeholder="Conferencia" (ngModelChange)="selectedConf()">
+  <app-select
+    class="form-control"
+    [options]="conferences"
+    class="flex"
+    name="conference"
+    [(ngModel)]="conf"
+    placeholder="Conferencia"
+    (ngModelChange)="selectedConf()"
+  >
   </app-select>
-  <app-select class="form-control" [options]="positions" class="flex" name="posicion" [(ngModel)]="pos"
-    placeholder="Posicion" (ngModelChange)="selectedPos()">
+  <app-select
+    class="form-control"
+    [options]="positions"
+    class="flex"
+    name="posicion"
+    [(ngModel)]="pos"
+    placeholder="Posicion"
+    (ngModelChange)="selectedPos()"
+  >
   </app-select>
-  <app-select class="form-control" [options]="categories" class="flex" name="categoria" [(ngModel)]="cat"
-    placeholder="Ordenar Por" (ngModelChange)="selectedCat()">
+  <app-select
+    class="form-control"
+    [options]="categories"
+    class="flex"
+    name="categoria"
+    [(ngModel)]="cat"
+    placeholder="Ordenar Por"
+    (ngModelChange)="selectedCat()"
+  >
   </app-select>
 </form>

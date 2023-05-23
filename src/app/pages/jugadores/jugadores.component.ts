@@ -24,7 +24,7 @@ import { PlayerTableComponent } from 'src/app/shared/components/player-table/pla
     FiltrarComponent,
     NgxPaginationModule,
     SpinnerComponent,
-    PlayerTableComponent
+    PlayerTableComponent,
   ],
 })
 export class JugadoresComponent implements OnInit {
@@ -34,7 +34,7 @@ export class JugadoresComponent implements OnInit {
   public loading = true;
   public conferencia: string;
   public posicion: string;
-  public categoria: string;
+  public categoria: keyof JugadorStats;
 
   constructor(
     private SearchService: SearchService,
@@ -44,7 +44,7 @@ export class JugadoresComponent implements OnInit {
     this.jugadoresFiltrados = [];
     this.conferencia = '';
     this.posicion = '';
-    this.categoria = '';
+    this.categoria = 'Name';
   }
 
   ngOnInit() {
@@ -67,11 +67,15 @@ export class JugadoresComponent implements OnInit {
   }
   posicionSeleccionada() {
     this.posicion = this.filters.form.form.value['posicion'];
-    this.jugadoresFiltrados = this._filterService.filtrarJugadoresPorPosiciones(this.posicion)
+    this.jugadoresFiltrados = this._filterService.filtrarJugadoresPorPosiciones(
+      this.posicion
+    );
     console.log(this.posicion);
   }
   categoriaSeleccionada() {
     this.categoria = this.filters.form.form.value['categoria'];
-    console.log(this.categoria);
+    this.jugadoresFiltrados = this._filterService.filtrarMejoresCategoria(
+      this.categoria,true
+    );
   }
 }

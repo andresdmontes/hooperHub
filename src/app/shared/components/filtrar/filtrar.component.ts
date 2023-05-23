@@ -14,7 +14,7 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
   standalone: true,
   selector: 'app-filtrar',
   templateUrl: './filtrar.component.html',
-  styleUrls: ['./filtrar.component.css'],
+  styleUrls: ['./filtrar.component.scss'],
   imports: [SelectRoleComponent, CommonModule, FormsModule],
 })
 export class FiltrarComponent {
@@ -29,6 +29,7 @@ export class FiltrarComponent {
   public conferences: string[];
   public positions: string[];
   public categories: string[];
+  toggleValue: string = 'qualifiers';
 
   constructor() {
     this.conf = '';
