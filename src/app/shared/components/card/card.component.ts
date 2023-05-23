@@ -23,7 +23,6 @@ export class CardComponent implements OnInit {
   top5: JugadorStats[];
   @Input() titulo: string;
   @Input() categoria: keyof JugadorStats;
-  @Input() equipos: Equipo[];
 
   constructor(
     private _statsService: StatsService,
