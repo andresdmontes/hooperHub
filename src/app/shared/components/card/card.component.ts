@@ -27,7 +27,8 @@ export class CardComponent implements OnInit {
 
   constructor(
     private _statsService: StatsService,
-    private _filterService: FilterService
+    private _filterService: FilterService,
+    private _searchService: SearchService
   ) {
     this.equipos = [];
     this.año = 2023;
@@ -40,6 +41,9 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.getTodasEstadisticas();
+    this._searchService.equipos$.subscribe((data) => {
+      this.equipos = data;
+    });
   }
 
   getTodasEstadisticas() {
@@ -48,15 +52,13 @@ export class CardComponent implements OnInit {
       .subscribe((jugadores) => {
         this.estadisticasJugadores = jugadores;
 
-        this.top5 = this._filterService.filtrarCincoMejoresCategoriaPorPartido(
+        this.top5 = this._filterService
+          .filtrarMejoresCategoria(this.categoria, true)
+          .slice(1, 5);
+        this.mejorJugador = this._filterService.filtrarMejoresCategoria(
           this.categoria,
-          this.estadisticasJugadores
-        );
-        this.mejorJugador =
-          this._filterService.filtrarMejorJugadorCategoriaPorPartido(
-            this.categoria,
-            this.estadisticasJugadores
-          );
+          true
+        )[0];
 
         this.isLoaded.emit(true);
         this.datosCargados = true;
@@ -72,8 +74,7 @@ export class CardComponent implements OnInit {
   }
   getEquipoPorJugador(jugador: JugadorStats): Equipo | undefined {
     let equipoID = jugador.TeamID;
-    // return this.equipos.find((e) => e.TeamID === equipoID);
-    return undefined
+    return this.equipos.find((e) => e.TeamID === equipoID);
   }
 
   logoEquipo(jugador: JugadorStats): string {
