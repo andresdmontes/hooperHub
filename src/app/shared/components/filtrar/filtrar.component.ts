@@ -23,12 +23,14 @@ export class FiltrarComponent {
   @Output() confSelected = new EventEmitter<void>();
   @Output() posSelected = new EventEmitter<void>();
   @Output() catSelected = new EventEmitter<void>();
+  @Output() modeSelected = new EventEmitter<void>();
   public conf: string;
   public pos: string;
   public cat: string;
   public conferences: string[];
   public positions: string[];
   public categories: string[];
+  public visualizar: string[];
   toggleValue: string = 'qualifiers';
 
   constructor() {
@@ -36,8 +38,9 @@ export class FiltrarComponent {
     this.pos = '';
     this.cat = '';
     this.conferences = ['Eastern', 'Western', 'All'];
-    this.positions = ['G', 'PG', 'SG', 'F', 'SF', 'PF', 'C'];
+    this.positions = ['PG', 'SG', 'SF', 'PF', 'C'];
     this.categories = ['Points', 'Rebounds', 'Assists', 'Steals'];
+    this.visualizar = ['Total', 'Por Partido'];
   }
 
   selectedConf() {
@@ -48,5 +51,8 @@ export class FiltrarComponent {
   }
   selectedCat() {
     this.catSelected.emit();
+  }
+  selectedMode() {
+    this.modeSelected.emit();
   }
 }

@@ -29,4 +29,14 @@
     (ngModelChange)="selectedCat()"
   >
   </app-select>
+  <app-select
+    class="form-control"
+    [options]="visualizar"
+    class="flex"
+    name="categoria"
+    [(ngModel)]="cat"
+    placeholder="Visualizar"
+    (ngModelChange)="selectedMode()"
+  >
+  </app-select>
 </form>
