@@ -14,7 +14,7 @@
         src="{{ logoEquipo(mejorJugador) }}"
         alt="logo"
       />
-      <p>{{siglasEquipo(mejorJugador)}}</p>
+      <p>{{ siglasEquipo(mejorJugador) }}</p>
     </div>
     <div class="col">
       <p class="m-0">
@@ -42,14 +42,16 @@
     <tbody>
       <tr *ngFor="let jugador of top5; let i = index">
         <td>{{ jugador.Name }}</td>
-        <td class="d-flex align-items-start">
-          <img
-            width="25px"
-            height="25px"
-            src="{{ logoEquipo(jugador) }}"
-            alt="logo"
-          />
-          <p>{{siglasEquipo(jugador)}}</p>
+        <td>
+          <div class="d-flex">
+            <img
+              width="30px"
+              height="30px"
+              src="{{ logoEquipo(jugador) }}"
+              alt="logo"
+            />
+            <p >{{ siglasEquipo(jugador) }}</p>
+          </div>
         </td>
         <td>
           {{ getStats(jugador) | number : ".1-1" }}
