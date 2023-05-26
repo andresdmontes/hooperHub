@@ -34,6 +34,14 @@ const routes: Routes = [
         (m) => m.MejoresEquiposComponent
       ),
   },
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('./pages/search/search.component').then((m) => m.SearchComponent),
+  },{
+    path: '**',
+    redirectTo:'/home'
+  }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
