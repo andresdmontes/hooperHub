@@ -1,2 +1,10 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('./assets/fonts/Kanit/Kanit-Light.ttf') format('truetype');
+}
+
+body {
+  font-family: 'MyCustomFont';
+}
