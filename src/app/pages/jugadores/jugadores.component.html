@@ -1,17 +1,19 @@
-<app-spinner *ngIf="loading" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
-<div *ngIf="!loading" class="container">
-  <div class="d-flex justify-content-between mb-3">
-    <h1>Filtrar Jugadores NBA</h1>
-    <button type="button" class="icon-button" (click)="toggleFilters($event)"><i class="icon logout"></i></button>
-  </div>
+<div class="cnt-all-players">
+  <app-spinner *ngIf="loading" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
+  <div *ngIf="!loading" class="container">
+    <div class="d-flex justify-content-between mb-3 w-auto">
+      <h1>Filtrar Jugadores NBA</h1>
+      <button type="button" class="icon-button" (click)="toggleFilters($event)"><i class="icon logout"></i></button>
+    </div>
 
-  <div *ngIf="isFilterOpen" class="col  justify-content-around align-items-center">
-    <app-filtrar #filters (catSelected)="categoriaSeleccionada()" (confSelected)="conferenciaSeleccionada()"
-      (posSelected)="posicionSeleccionada()" class="col"></app-filtrar>
-  </div>
+    <div *ngIf="isFilterOpen" class="col  justify-content-around align-items-center" w-100>
+      <app-filtrar #filters (catSelected)="categoriaSeleccionada()" (confSelected)="conferenciaSeleccionada()"
+        (posSelected)="posicionSeleccionada()" class="col "></app-filtrar>
+    </div>
 
 
-  <div *ngIf="jugadoresFiltrados.length > 0" class="container">
-    <app-player-table [jugadoresFiltrados]="jugadoresFiltrados"></app-player-table>
+    <div *ngIf="jugadoresFiltrados.length > 0" class="container">
+      <app-player-table [jugadoresFiltrados]="jugadoresFiltrados"></app-player-table>
+    </div>
   </div>
 </div>

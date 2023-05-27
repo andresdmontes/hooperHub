@@ -46,7 +46,7 @@ export class JugadoresComponent implements OnInit {
     this.conferencia = '';
     this.posicion = '';
     this.categoria = 'Name';
-    this.isFilterOpen = true;
+    this.isFilterOpen = false;
   }
 
   ngOnInit() {

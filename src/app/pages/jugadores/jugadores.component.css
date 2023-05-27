@@ -1,3 +1,7 @@
+.cnt-all-players{
+  width: 100%;
+}
+
 .container tr:nth-child(even) {
   background-color: #f2f2f2;
 }
@@ -18,7 +22,7 @@
   border: none;
   display: inline-block;
   cursor: pointer;
-  background-color: gray;
+  background-color: #fff;
 }
 
 .icon {
@@ -29,5 +33,5 @@
 }
 
 .logout {
-  background-image: url("#");
+  background-image: url("./../../../assets/icons/filter-svgrepo-com.svg");
 }
