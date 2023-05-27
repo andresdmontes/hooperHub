@@ -31,9 +31,7 @@ export class SearchService {
   }
 
   obtenerTodosLosEquipos(): Observable<Equipo[]> {
-    return this.http.get<any[]>(
-      this.baseApiUrl + 'teams?key=' + this.apiKey
-    );
+    return this.http.get<any[]>(this.baseApiUrl + 'teams?key=' + this.apiKey);
   }
 
   obtenerEquiposActivos(): Observable<Equipo[]> {

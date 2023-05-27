@@ -1,1 +1,29 @@
-<p>search works!</p>
+<div class="row">
+  <div class="col d-flex flex-row justify-content-start align-items-center w-100" >
+    <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players','Teams']" class=""></app-select>
+    <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue" placeholder="Busca aqui" class="w-100">
+    </shared-search-box>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h2>Filtered Search</h2>
+    <div class="cnt-results" *ngIf="!notFound">
+      <div *ngIf="filteredPlayers.length>0">
+        <div class="row" *ngFor="let player of filteredPlayers">
+          {{player.FirstName}}
+          {{player.LastName}}
+        </div>
+      </div>
+      <div *ngIf="filteredTeams">
+        <div class="row" *ngFor="let team of filteredTeams">
+          {{team.Name}}
+        </div>
+      </div>
+    </div>
+    <div class="cnt-notFound" *ngIf="notFound">
+      ERROR
+    </div>
+  </div>
+</div>
