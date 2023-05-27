@@ -34,8 +34,18 @@
     [options]="visualizar"
     class="flex"
     name="categoria"
-    [(ngModel)]="cat"
+    [(ngModel)]="mode"
     placeholder="Visualizar"
+    (ngModelChange)="selectedMode()"
+  >
+  </app-select>
+  <app-select
+    class="form-control"
+    [options]="elegible"
+    class="flex"
+    name="categoria"
+    [(ngModel)]="apto"
+    placeholder="Apto"
     (ngModelChange)="selectedMode()"
   >
   </app-select>

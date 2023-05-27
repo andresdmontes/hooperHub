@@ -1,12 +1,33 @@
+.container tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-.container tr:nth-child(even){background-color: #f2f2f2;}
+.container tr:hover {
+  background-color: #ddd;
+}
 
-.container tr:hover {background-color: #ddd;}
-
-.bg-color{
+.bg-color {
   background-color: var(--bgColor);
 }
 
-.pagination{
+.pagination {
   justify-content: center;
+}
+
+.icon-button {
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  background-color: gray;
+}
+
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+}
+
+.logout {
+  background-image: url("#");
 }

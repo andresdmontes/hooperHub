@@ -35,6 +35,7 @@ export class JugadoresComponent implements OnInit {
   public conferencia: string;
   public posicion: string;
   public categoria: keyof JugadorStats;
+  public isFilterOpen: boolean;
 
   constructor(
     private SearchService: SearchService,
@@ -45,6 +46,7 @@ export class JugadoresComponent implements OnInit {
     this.conferencia = '';
     this.posicion = '';
     this.categoria = 'Name';
+    this.isFilterOpen = true;
   }
 
   ngOnInit() {
@@ -75,7 +77,12 @@ export class JugadoresComponent implements OnInit {
   categoriaSeleccionada() {
     this.categoria = this.filters.form.form.value['categoria'];
     this.jugadoresFiltrados = this._filterService.filtrarMejoresCategoria(
-      this.categoria,true
+      this.categoria,
+      true
     );
+  }
+
+  toggleFilters($event: Event) {
+    this.isFilterOpen = !this.isFilterOpen;
   }
 }
