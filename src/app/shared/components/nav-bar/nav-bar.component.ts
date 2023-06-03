@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
@@ -10,7 +11,8 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
   imports:[
     RouterModule,
     NgbCollapseModule,
-    RouterLink
+    RouterLink,
+    CommonModule
   ]
 })
 export class NavBarComponent {
