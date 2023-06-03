@@ -1,22 +1,55 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+<nav class="navbar navbar-expand-lg navbar-light  mb-3">
   <div class="container-fluid">
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      (click)="isMenuCollapsed = !isMenuCollapsed"
+      style="margin-left: auto"
+    >
+      &#9776;
+    </button>
 
-    <a class="navbar-brand" routerLink="/home" (click)="isMenuCollapsed = true">Home</a>
-    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
-
-    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <div [ngbCollapse]="isMenuCollapsed" bg-light class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mejores/jugadores" (click)="isMenuCollapsed = true">Mejores Jugadores</a>
+          <a
+            class="nav-link"
+            routerLink="/home"
+            (click)="isMenuCollapsed = true"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mejores/equipos" (click)="isMenuCollapsed = true">Mejores equipos</a>
+          <a
+            class="nav-link"
+            routerLink="/mejores/jugadores"
+            (click)="isMenuCollapsed = true"
+            >Mejores Jugadores</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/mejores/equipos"
+            (click)="isMenuCollapsed = true"
+            >Mejores equipos</a
+          >
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/stats/jugadores" (click)="isMenuCollapsed = true">Todos los jugadores</a>
+          <a
+            class="nav-link"
+            routerLink="/stats/jugadores"
+            (click)="isMenuCollapsed = true"
+            >Todos los jugadores</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/stats/equipos" (click)="isMenuCollapsed = true">Todos los equipos</a>
+          <a
+            class="nav-link"
+            routerLink="/stats/equipos"
+            (click)="isMenuCollapsed = true"
+            >Todos los equipos</a
+          >
         </li>
       </ul>
     </div>
