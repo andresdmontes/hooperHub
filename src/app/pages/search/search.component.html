@@ -1,29 +1,102 @@
-<div class="row">
-  <div class="col d-flex flex-row justify-content-start align-items-center w-100" >
-    <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players','Teams']" class=""></app-select>
-    <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue" placeholder="Busca aqui" class="w-100">
-    </shared-search-box>
-  </div>
+<div class="cnt-search  mx-auto ">
+  <main>
+    <div class="jumbotron w-100 p-4">
+      <h1 class="display-4">Encuentra información sobre jugadores y equipos de la NBA</h1>
+      <div class="row">
+        <div class="col d-flex flex-row justify-content-start align-items-center w-100">
+          <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players','Teams']" class="">
+          </app-select>
+          <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue" placeholder="Busca aqui"
+            class="w-100">
+          </shared-search-box>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="cnt-results" *ngIf="!notFound">
+            <div *ngIf="filteredPlayers.length>0">
+              <h2>Jugadores Encontrados:</h2>
+              <div class="row" *ngFor="let player of filteredPlayers">
+                {{player.FirstName}}
+                {{player.LastName}}
+              </div>
+            </div>
+            <div *ngIf="filteredTeams.length>0">
+              <h2>Equipos Encontrados:</h2>
+              <div class=" row" *ngFor="let team of filteredTeams">
+              {{team.Name}}
+            </div>
+          </div>
+        </div>
+        <div class="cnt-notFound" *ngIf="notFound">
+          ERROR
+        </div>
+      </div>
+    </div>
 </div>
 
-<div class="row">
-  <div class="col">
-    <h2>Filtered Search</h2>
-    <div class="cnt-results" *ngIf="!notFound">
-      <div *ngIf="filteredPlayers.length>0">
-        <div class="row" *ngFor="let player of filteredPlayers">
-          {{player.FirstName}}
-          {{player.LastName}}
-        </div>
-      </div>
-      <div *ngIf="filteredTeams">
-        <div class="row" *ngFor="let team of filteredTeams">
-          {{team.Name}}
+<section class="w-100 p-4">
+  <h2 class="mb-4">Estadísticas destacadas</h2>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title">Jugador destacado</h5>
+          <p class="card-text">Estadísticas y detalles sobre el jugador</p>
+          <a href="#" class="btn btn-primary">Ver más</a>
         </div>
       </div>
     </div>
-    <div class="cnt-notFound" *ngIf="notFound">
-      ERROR
+    <div class="col-lg-4">
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title">Equipo destacado</h5>
+          <p class="card-text">Estadísticas y detalles sobre el equipo</p>
+          <a href="#" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title">Estadística destacada</h5>
+          <p class="card-text">Información sobre una estadística interesante</p>
+          <a href="#" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
     </div>
   </div>
+</section>
+
+<section class="w-100 p-4">
+  <h2 class="mb-4">Noticias de la NBA</h2>
+
+  <div class="card-deck">
+    <div class=" card mb-2">
+
+      <div class="card-body">
+        <h5 class="card-title">Título de la noticia</h5>
+        <p class="card-text">Descripción breve de la noticia</p>
+        <a href="#" class="btn btn-primary">Leer más</a>
+      </div>
+    </div>
+    <div class="card mb-2">
+
+      <div class="card-body">
+        <h5 class="card-title">Título de la noticia</h5>
+        <p class="card-text">Descripción breve de la noticia</p>
+        <a href="#" class="btn btn-primary">Leer más</a>
+      </div>
+    </div>
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title">Título de la noticia</h5>
+        <p class="card-text">Descripción breve de la noticia</p>
+        <a href="#" class="btn btn-primary">Leer más</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
 </div>

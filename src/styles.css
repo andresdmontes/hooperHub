@@ -5,16 +5,11 @@
   src: url('./assets/fonts/Kanit/Kanit-Light.ttf') format('truetype');
 }
 
-body {
-  font-family: 'MyCustomFont';
-}
-
 html,
 body {
+  font-family: 'MyCustomFont';
   margin: 0;
   padding: 0;
   touch-action: pan-x pan-y;
   user-scalable: no;
-
-
 }
