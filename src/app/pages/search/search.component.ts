@@ -65,7 +65,7 @@ export class SearchComponent {
     this._searchService.equipos$.subscribe((data) => {
       this.filteredTeams = data
         .filter((team: Equipo) =>
-          team.Name.toLowerCase().includes(term.toLowerCase())
+          team.Name.toLowerCase().includes(term.toLowerCase()) || team.City.toLowerCase().includes(term.toLowerCase())
         )
         .slice(0, 8);
       console.log(this.filteredTeams);
