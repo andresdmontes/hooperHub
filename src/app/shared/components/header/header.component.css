@@ -1,0 +1,10 @@
+#logo {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .navbar-toggler {
+    float: right;
+    margin-right: 15px;
+  }
+}
