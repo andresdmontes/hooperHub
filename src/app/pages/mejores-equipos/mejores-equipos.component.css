@@ -1,7 +1,7 @@
-.tarjeta{
-  margin: 10px;
+.spinner{
+  margin: 0 auto;
 }
 
-.w-30{
-  width: 30%;
+.hidden{
+  display: none;
 }

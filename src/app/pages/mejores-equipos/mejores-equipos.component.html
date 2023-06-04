@@ -1,26 +1,26 @@
-<div class="cnt-mejores-wrapper position-relative" style="height: 500px;">
+<div class="cnt-mejores-wrapper " style="height: 500px;">
   <app-spinner *ngIf="!isLoaded" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
   <div class="d-flex flex-wrap justify-content-center align-items-center" style="height: 100%;">
-    <div class="row">
-      <div class="col-12 col-md-6 col-lg-4 px-4">
-        <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[0]" categoria="Points"
-          (isLoaded)="datosCargados($event)"></app-card>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 px-4">
-        <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[1]" categoria="Rebounds"></app-card>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 px-4">
-        <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[2]" categoria="Assists"></app-card>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 px-4">
-        <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[3]" categoria="Steals"></app-card>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 px-4">
-        <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[4]" categoria="BlockedShots"></app-card>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 px-4">
-        <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[5]" categoria="Minutes"></app-card>
-      </div>
+
+    <div class="col-12 col-md-6 col-lg-4 px-2">
+      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[0]" categoria="Points"
+        (isLoaded)="datosCargados($event)"></app-card>
     </div>
+    <div class="col-12 col-md-6 col-lg-4 px-2">
+      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[1]" categoria="Rebounds"></app-card>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 px-2">
+      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[2]" categoria="Assists"></app-card>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 px-2">
+      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[3]" categoria="Steals"></app-card>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 px-2">
+      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[4]" categoria="BlockedShots"></app-card>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 px-2">
+      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[5]" categoria="Minutes"></app-card>
+    </div>
+
   </div>
 </div>
