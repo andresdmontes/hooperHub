@@ -1,0 +1,36 @@
+@import "./../../../../assets/styles/colors";
+.navbar-toggler-right {
+  margin-left: auto;
+}
+
+.fixed-position {
+  position: fixed;
+  top: 45px;
+  right: 40px;
+  background-color: #fff;
+  padding: 4px 25px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.turnus-navbar {
+  background-color: $gris-oscuro;
+
+  .navbar-nav .nav-link {
+    color: $gris-claro;
+
+  }
+
+  .navbar-toggler {
+    border-color: transparent;
+    color: $gris-oscuro;
+    background-color: $gris-claro;
+  }
+
+  .navbar-toggler:hover,
+  .navbar-toggler:focus {
+    color: $azul-medio;
+  }
+
+  // Otros estilos específicos del navbar
+}

@@ -1,0 +1,30 @@
+@import "./../../../../assets/styles/colors";
+.turnus-header {
+  background-color: $gris-oscuro;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .container-fluid {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .row {
+    align-items: center;
+
+    .col-lg-3,
+    .col-md-4,
+    .col-6 {
+      /* Estilos para el logo */
+    }
+
+    .col-lg-9,
+    .col-md-8,
+    .col-6 {
+      /* Estilos para el componente de navegación */
+    }
+  }
+}

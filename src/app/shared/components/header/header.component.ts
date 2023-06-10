@@ -7,7 +7,7 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
   standalone:true,
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.scss'],
   imports:[
     RouterModule,
     CommonModule,

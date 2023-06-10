@@ -1,0 +1,52 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "assets/styles/_colors.scss";
+
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("./assets/fonts/Kanit/Kanit-Light.ttf") format("truetype");
+}
+
+html,
+body {
+  font-family: "MyCustomFont";
+  margin: 0;
+  padding: 0;
+  touch-action: pan-x pan-y;
+  user-scalable: no;
+  background-color: $gris-claro;
+  color: $gris-oscuro;
+}
+
+a {
+  color: $azul-oscuro;
+  text-decoration: none;
+
+  &:hover {
+    color: $azul-medio;
+  }
+}
+
+// Ejemplo de uso en una tabla
+table {
+  border-collapse: collapse;
+
+  th,
+  td {
+    border: 1px solid $gris-medio;
+    padding: 10px;
+  }
+
+  th {
+    background-color: $azul-oscuro;
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: $gris-claro;
+  }
+
+  tr:hover {
+    background-color: $azul-medio;
+    color: white;
+  }
+}

@@ -9,7 +9,7 @@ import { HeaderComponent } from '../shared/components/header/header.component';
   standalone: true,
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   imports: [
     RouterModule,
     CommonModule,
