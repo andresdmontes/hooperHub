@@ -1,4 +1,74 @@
-.row,.col{
+.row,
+.col {
   padding: 10px;
 }
 
+.logo img {
+  height: 40px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+/* Estilos del buscador */
+.search-section {
+  text-align: center;
+}
+
+.search-section h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.search-section button {
+  padding: 8px 15px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilos de los trofeos */
+.trophy-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trophy-card {
+  text-align: center;
+}
+
+.trophy-card h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+/* Estilos de las noticias */
+.news-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.news-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.news-card img {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.news-card h3 {
+  margin: 0;
+}

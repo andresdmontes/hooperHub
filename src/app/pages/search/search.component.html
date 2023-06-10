@@ -1,102 +1,74 @@
-<div class="cnt-search  mx-auto ">
+<div class="cnt-search mx-auto">
   <main>
-    <div class="jumbotron w-100 p-4">
-      <h1 class="display-4">Encuentra información sobre jugadores y equipos de la NBA</h1>
-      <div class="row">
-        <div class="col d-flex flex-row justify-content-start align-items-center w-100">
-          <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players','Teams']" class="">
-          </app-select>
-          <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue" placeholder="Busca aqui"
-            class="w-100">
-          </shared-search-box>
-        </div>
+    <section class="search-section">
+      <h1>Buscador de Jugadores y Equipos</h1>
+      <div
+        class="col d-flex flex-row justify-content-start align-items-center w-100"
+      >
+        <app-select
+          [(ngModel)]="filtro"
+          (ngModelChange)="searchByValue()"
+          [options]="['Players', 'Teams']"
+          class=""
+        >
+        </app-select>
+        <shared-search-box
+          (onDebounce)="searchByValue($event)"
+          [initialValue]="initialValue"
+          placeholder="Busca aqui"
+          class="w-100"
+        >
+        </shared-search-box>
       </div>
       <div class="row">
         <div class="col">
           <div class="cnt-results" *ngIf="!notFound">
-            <div *ngIf="filteredPlayers.length>0">
+            <div *ngIf="filteredPlayers.length > 0">
               <h2>Jugadores Encontrados:</h2>
               <div class="row" *ngFor="let player of filteredPlayers">
-                {{player.FirstName}}
-                {{player.LastName}}
+                {{ player.FirstName }}
+                {{ player.LastName }}
               </div>
             </div>
-            <div *ngIf="filteredTeams.length>0">
+            <div *ngIf="filteredTeams.length > 0">
               <h2>Equipos Encontrados:</h2>
-              <div class=" row" *ngFor="let team of filteredTeams">
-              {{team.City}} {{team.Name}}
+              <div class="row" *ngFor="let team of filteredTeams">
+                {{ team.City }} {{ team.Name }}
+              </div>
             </div>
           </div>
-        </div>
-        <div class="cnt-notFound" *ngIf="notFound">
-          ERROR
+          <div class="cnt-notFound" *ngIf="notFound">ERROR</div>
         </div>
       </div>
-    </div>
-</div>
+    </section>
 
-<section class="w-100 p-4">
-  <h2 class="mb-4">Estadísticas destacadas</h2>
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="card mb-2">
-        <div class="card-body">
-          <h5 class="card-title">Jugador destacado</h5>
-          <p class="card-text">Estadísticas y detalles sobre el jugador</p>
-          <a href="#" class="btn btn-primary">Ver más</a>
-        </div>
+    <section class="trophy-section">
+      <div class="trophy-card">
+        <h2>MVP</h2>
+        <img src="mvp-trophy.png" alt="Trofeo MVP" />
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card mb-2">
-        <div class="card-body">
-          <h5 class="card-title">Equipo destacado</h5>
-          <p class="card-text">Estadísticas y detalles sobre el equipo</p>
-          <a href="#" class="btn btn-primary">Ver más</a>
-        </div>
+      <div class="trophy-card">
+        <h2>Campeón</h2>
+        <img src="champion-trophy.png" alt="Trofeo de Campeón" />
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card mb-2">
-        <div class="card-body">
-          <h5 class="card-title">Estadística destacada</h5>
-          <p class="card-text">Información sobre una estadística interesante</p>
-          <a href="#" class="btn btn-primary">Ver más</a>
-        </div>
+      <div class="trophy-card">
+        <h2>Otro Trofeo</h2>
+        <img src="trophy.png" alt="Otro Trofeo" />
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="w-100 p-4">
-  <h2 class="mb-4">Noticias de la NBA</h2>
-
-  <div class="card-deck">
-    <div class=" card mb-2">
-
-      <div class="card-body">
-        <h5 class="card-title">Título de la noticia</h5>
-        <p class="card-text">Descripción breve de la noticia</p>
-        <a href="#" class="btn btn-primary">Leer más</a>
+    <section class="news-section">
+      <h2>Últimas Noticias</h2>
+      <div class="news-card">
+        <img src="news-image.jpg" alt="Imagen de Noticia" />
+        <h3>Título de la Noticia</h3>
+        <p>Descripción breve de la noticia...</p>
       </div>
-    </div>
-    <div class="card mb-2">
-
-      <div class="card-body">
-        <h5 class="card-title">Título de la noticia</h5>
-        <p class="card-text">Descripción breve de la noticia</p>
-        <a href="#" class="btn btn-primary">Leer más</a>
+      <div class="news-card">
+        <img src="news-image.jpg" alt="Imagen de Noticia" />
+        <h3>Título de la Noticia</h3>
+        <p>Descripción breve de la noticia...</p>
       </div>
-    </div>
-    <div class="card mb-2">
-      <div class="card-body">
-        <h5 class="card-title">Título de la noticia</h5>
-        <p class="card-text">Descripción breve de la noticia</p>
-        <a href="#" class="btn btn-primary">Leer más</a>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-
+    </section>
+  </main>
 </div>

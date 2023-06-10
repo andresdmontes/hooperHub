@@ -1,18 +1,25 @@
-
-.ctn-role{
+.ctn-role {
   position: relative;
+  margin: 15px;
 
-  .dropdown{
+  input {
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+  }
+
+
+  .dropdown {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 10;
     left: 0;
     background-color: beige;
-    input{
+    input {
       cursor: pointer;
       margin: 10px 0;
     }
+    z-index: 1;
   }
-  
 }
