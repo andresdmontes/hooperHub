@@ -1,14 +1,10 @@
 <header class="col-10 mx-auto mt-3 turnus-header">
   <div class="container-fluid">
     <div class="row d-flex justify-content-around align-items-center">
-      <div class="col-lg-3 col-md-3 col-6">
-        <img
-          src="./../../../../assets/logos/letras lado.png"
-          alt="Logo grande"
-          class="img-fluid"
-        />
+      <div class="col-lg-2 col-md-3 col-6">
+        <img [src]="getImageUrl()" alt="Logo grande" class="img-fluid" />
       </div>
-      <div class="col-lg-9 col-md-3 col-6">
+      <div class="col-lg-10 col-md-3 col-6">
         <app-nav-bar class="ml-auto"></app-nav-bar>
       </div>
     </div>

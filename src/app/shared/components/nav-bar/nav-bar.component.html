@@ -1,19 +1,33 @@
-<nav class="navbar navbar-expand-lg d-flex align-items-center turnus-navbar">
-  <div class="container-fluid">
-    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isMenuCollapsed = !isMenuCollapsed" style="margin-left: auto">
+<nav
+  class="navbar navbar-expand-lg navbar-lg d-flex align-items-center turnus-navbar"
+>
+  <div class="container">
+    <button
+      class="navbar-toggler navbar-toggler-right navbar-toggler-lg"
+      type="button"
+      (click)="isMenuCollapsed = !isMenuCollapsed"
+      style="margin-left: auto"
+    >
       &#9776;
     </button>
 
-    <div [ngbCollapse]="isMenuCollapsed" [animation]="false" [ngClass]="{ 'fixed-position': !isMenuCollapsed }" bg-light class="collapse navbar-collapse">
+    <div
+      [ngbCollapse]="isMenuCollapsed"
+      [animation]="false"
+      [ngClass]="{ 'fixed-position': !isMenuCollapsed }"
+      bg-light
+      class="collapse navbar-collapse"
+    >
       <ul class="navbar-nav">
         <li class="nav-item">
           <a
             class="nav-link"
             routerLink="/home"
             (click)="isMenuCollapsed = true"
+            [ngClass]="{ small: !isMenuCollapsed }"
           >
             <i class="bi bi-house px-2" *ngIf="!isMenuCollapsed"></i>
-            Home
+            {{ "Home" | uppercase }}
           </a>
         </li>
         <li class="nav-item">
@@ -21,9 +35,10 @@
             class="nav-link"
             routerLink="/mejores/jugadores"
             (click)="isMenuCollapsed = true"
+            [ngClass]="{ small: !isMenuCollapsed }"
           >
             <i class="bi bi-award px-2" *ngIf="!isMenuCollapsed"></i>
-            Mejores Jugadores
+            {{ "Mejores Jugadores" | uppercase }}
           </a>
         </li>
         <li class="nav-item">
@@ -31,9 +46,10 @@
             class="nav-link"
             routerLink="/mejores/equipos"
             (click)="isMenuCollapsed = true"
+            [ngClass]="{ small: !isMenuCollapsed }"
           >
             <i class="bi bi-trophy px-2" *ngIf="!isMenuCollapsed"></i>
-            Mejores Equipos
+            {{ "Mejores Equipos" | uppercase }}
           </a>
         </li>
         <li class="nav-item">
@@ -41,9 +57,10 @@
             class="nav-link"
             routerLink="/stats/jugadores"
             (click)="isMenuCollapsed = true"
+            [ngClass]="{ small: !isMenuCollapsed }"
           >
             <i class="bi bi-people px-2" *ngIf="!isMenuCollapsed"></i>
-            Todos los Jugadores
+            {{ "Todos los Jugadores" | uppercase }}
           </a>
         </li>
         <li class="nav-item">
@@ -51,9 +68,10 @@
             class="nav-link"
             routerLink="/stats/equipos"
             (click)="isMenuCollapsed = true"
+            [ngClass]="{ small: !isMenuCollapsed }"
           >
             <i class="bi bi-list-stars px-2" *ngIf="!isMenuCollapsed"></i>
-            Todos los Equipos
+            {{ "Todos los Equipos" | uppercase }}
           </a>
         </li>
       </ul>
