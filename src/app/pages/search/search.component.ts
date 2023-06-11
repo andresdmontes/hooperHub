@@ -24,11 +24,10 @@ export class SearchComponent {
   public filteredTeams: Equipo[];
   public notFound: boolean;
   carouselPhotos: Photo[] = [
-    { url: 'path/to/photo1.jpg', title: 'Foto 1' },
-    { url: 'path/to/photo2.jpg', title: 'Foto 2' },
-    { url: 'path/to/photo3.jpg', title: 'Foto 3' }
+    { url: './../assets/img/AP23143137304842-1024x576.jpg', title: 'Foto 1' },
+    { url: './../assets/img/NBA Playoffs Bracket 060123.jpg', title: 'Foto 2' },
+    { url: './../assets/img/nikola-jokic-mvp.jpeg', title: 'Foto 3' }
   ];
-
   constructor(private readonly _searchService: SearchService) {
     this.searchValue = '';
     this.initialValue = '';

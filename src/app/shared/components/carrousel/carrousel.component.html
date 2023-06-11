@@ -1,11 +1,12 @@
 <div class="carousel">
+  <h2 class="mb-2">{{ title }}</h2>
   <div class="carousel-container">
-    <div class="carousel-item" *ngFor="let photo of photos; let i = index" [class.active]="currentIndex === i">
+    <div class=" mb-3 carousel-item" *ngFor="let photo of photos; let i = index" [class.active]="currentIndex === i">
       <img [src]="photo.url" alt="{{ photo.title }}">
     </div>
   </div>
-  <div class="d-flex justify-content-center carousel-controls">
-    <button (click)="previousPhoto()">Anterior</button>
-    <button (click)="nextPhoto()">Siguiente</button>
+  <div class=" m-4 carousel-controls">
+    <button class="mx-3" (click)="previousPhoto()">Anterior</button>
+    <button class="mx-3" (click)="nextPhoto()">Siguiente</button>
   </div>
 </div>
