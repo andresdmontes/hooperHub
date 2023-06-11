@@ -1,74 +1,66 @@
-<div class="cnt-search mx-auto">
-  <main>
-    <section class="search-section">
-      <h1>Buscador de Jugadores y Equipos</h1>
-      <div
-        class="col d-flex flex-row justify-content-start align-items-center w-100"
-      >
-        <app-select
-          [(ngModel)]="filtro"
-          (ngModelChange)="searchByValue()"
-          [options]="['Players', 'Teams']"
-          class=""
-        >
-        </app-select>
-        <shared-search-box
-          (onDebounce)="searchByValue($event)"
-          [initialValue]="initialValue"
-          placeholder="Busca aqui"
-          class="w-100"
-        >
-        </shared-search-box>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="cnt-results" *ngIf="!notFound">
-            <div *ngIf="filteredPlayers.length > 0">
-              <h2>Jugadores Encontrados:</h2>
-              <div class="row" *ngFor="let player of filteredPlayers">
-                {{ player.FirstName }}
-                {{ player.LastName }}
+<div class="container">
+  <div class="cnt-search mx-auto">
+    <main>
+      <section class="search-section">
+        <h1 class="text-center">Buscador de Jugadores y Equipos</h1>
+        <div class="row d-flex align-items-center justify-content-start">
+          <div class="col-2 ">
+            <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players', 'Teams']"
+              class="w-100">
+            </app-select>
+          </div>
+          <div class="col-10">
+            <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue"
+              placeholder="Busca aquí" class="w-100">
+            </shared-search-box>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+            <div class="cnt-results" *ngIf="!notFound">
+              <div *ngIf="filteredPlayers.length > 0">
+                <h2>Jugadores Encontrados:</h2>
+                <div class="row" *ngFor="let player of filteredPlayers">
+                  <div class="col">{{ player.FirstName }} {{ player.LastName }}</div>
+                </div>
+              </div>
+              <div *ngIf="filteredTeams.length > 0">
+                <h2>Equipos Encontrados:</h2>
+                <div class="row" *ngFor="let team of filteredTeams">
+                  <div class="col">{{ team.City }} {{ team.Name }}</div>
+                </div>
               </div>
             </div>
-            <div *ngIf="filteredTeams.length > 0">
-              <h2>Equipos Encontrados:</h2>
-              <div class="row" *ngFor="let team of filteredTeams">
-                {{ team.City }} {{ team.Name }}
-              </div>
+            <div class="cnt-notFound" *ngIf="notFound">ERROR</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="trophy-section">
+        <app-carrousel title="Mi Carrusel" [photos]="carouselPhotos"></app-carrousel>
+      </section>
+
+      <section class="news-section">
+        <h2>Últimas Noticias</h2>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="news-card">
+              <img src="news-image.jpg" alt="Imagen de Noticia" />
+              <h3>Título de la Noticia</h3>
+              <p>Descripción breve de la noticia...</p>
             </div>
           </div>
-          <div class="cnt-notFound" *ngIf="notFound">ERROR</div>
+          <div class="col-12 col-md-6">
+            <div class="news-card">
+              <img src="news-image.jpg" alt="Imagen de Noticia" />
+              <h3>Título de la Noticia</h3>
+              <p>Descripción breve de la noticia...</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section class="trophy-section">
-      <div class="trophy-card">
-        <h2>MVP</h2>
-        <img src="mvp-trophy.png" alt="Trofeo MVP" />
-      </div>
-      <div class="trophy-card">
-        <h2>Campeón</h2>
-        <img src="champion-trophy.png" alt="Trofeo de Campeón" />
-      </div>
-      <div class="trophy-card">
-        <h2>Otro Trofeo</h2>
-        <img src="trophy.png" alt="Otro Trofeo" />
-      </div>
-    </section>
-
-    <section class="news-section">
-      <h2>Últimas Noticias</h2>
-      <div class="news-card">
-        <img src="news-image.jpg" alt="Imagen de Noticia" />
-        <h3>Título de la Noticia</h3>
-        <p>Descripción breve de la noticia...</p>
-      </div>
-      <div class="news-card">
-        <img src="news-image.jpg" alt="Imagen de Noticia" />
-        <h3>Título de la Noticia</h3>
-        <p>Descripción breve de la noticia...</p>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  </div>
 </div>

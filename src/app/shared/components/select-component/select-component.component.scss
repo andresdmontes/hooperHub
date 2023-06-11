@@ -1,11 +1,29 @@
+@import './../../../../assets/styles/colors';
+
 .ctn-role {
   position: relative;
   margin: 15px;
 
   input {
-    width: 100px;
+    background: $gris-oscuro;
+    color: $azul-medio;
+    width: 120px;
     padding: 5px;
     text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+  }
+
+  ::placeholder {
+    color: $azul-medio;
+    opacity: 1;
+    /* Firefox */
+  }
+
+  input:focus {
+    border: $gris-oscuro solid 1px;
+    outline: 0 none;
   }
 
 
@@ -13,13 +31,36 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 10;
+    top: 20;
     left: 0;
-    background-color: beige;
+    right: 0;
+    background-color: $gris-oscuro;
+    border-radius: 5px;
+
     input {
+      text-align: center;
+      width: 100%;
+      color: $gris-claro;
+      background-color: $gris-oscuro;
+      border-radius: 0;
+      margin: 10px 0;
+      padding: 2px;
+    }
+
+    input:hover {
+      background-color: $azul-medio;
+      color: #fff;
       cursor: pointer;
       margin: 10px 0;
+      padding: 2px;
     }
+
+    input:focus {
+      border-color: $gris-oscuro;
+      box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px rgba(255, 144, 0, 0.6);
+      outline: 0 none;
+    }
+
     z-index: 1;
   }
 }

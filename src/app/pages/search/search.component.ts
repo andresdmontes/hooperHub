@@ -6,13 +6,15 @@ import { SearchService } from 'src/app/services/search.service';
 import { FormsModule } from '@angular/forms';
 import { Jugador } from 'src/app/interfaces/jugador.interface';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
+import { Photo } from 'src/app/shared/interfaces/carrouselFoto.interface';
+import { CarrouselComponent } from 'src/app/shared/components/carrousel/carrousel.component';
 
 @Component({
   standalone: true,
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  imports: [CommonModule, FormsModule, SearchBoxComponent, SelectRoleComponent],
+  imports: [CommonModule, FormsModule, SearchBoxComponent, SelectRoleComponent, CarrouselComponent],
 })
 export class SearchComponent {
   public searchValue: string;
@@ -21,6 +23,11 @@ export class SearchComponent {
   public filteredPlayers: Jugador[];
   public filteredTeams: Equipo[];
   public notFound: boolean;
+  carouselPhotos: Photo[] = [
+    { url: 'path/to/photo1.jpg', title: 'Foto 1' },
+    { url: 'path/to/photo2.jpg', title: 'Foto 2' },
+    { url: 'path/to/photo3.jpg', title: 'Foto 3' }
+  ];
 
   constructor(private readonly _searchService: SearchService) {
     this.searchValue = '';

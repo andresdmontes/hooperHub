@@ -1,4 +1,6 @@
-.cnt-all-players{
+@import './../../../assets/styles/_colors.scss';
+
+.cnt-all-players {
   width: 100%;
 }
 
@@ -22,7 +24,7 @@
   border: none;
   display: inline-block;
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--gris-claro);
 }
 
 .icon {
