@@ -1,6 +1,6 @@
 <div class="ctn-role">
-  <input readonly [required]="required" [(ngModel)]="value" (click)="toggleMenu()" (ngModelChange)="onChange($event)"
-    (blur)="onTouched()" [placeholder]="placeholder">
+  <input aria-label="dropdown select " readonly [required]="required" [(ngModel)]="value" (click)="toggleMenu()"
+    (ngModelChange)="onChange($event)" (blur)="onTouched()" [placeholder]="placeholder">
 
   <span *ngIf="error">{{errorMsg}}</span>
   <div *ngIf="isMenuOpen" class="dropdown">

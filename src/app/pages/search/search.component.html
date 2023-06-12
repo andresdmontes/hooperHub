@@ -5,7 +5,7 @@
         <h1 class="text-center">Buscador de Jugadores y Equipos</h1>
         <div class="row align-items-center justify-content-start">
           <div class="col-md-3 col-12">
-            <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players', 'Teams']"
+            <app-select  [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players', 'Teams']"
               class="w-100">
             </app-select>
           </div>

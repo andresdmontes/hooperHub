@@ -72,11 +72,11 @@
 }
 
 .cnt-info {
-  color: #999999;
+  color: #a0a0a0;
 }
 
-.cnt-info h5 {
-  color: #1976D2;
+.cnt-info h3 {
+  color: #1b81e7;
 }
 
 @media (max-width: 1200px) {
