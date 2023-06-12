@@ -1,12 +1,35 @@
-<div class="carousel">
-  <h2 class="mb-2">{{ title }}</h2>
-  <div class="carousel-container">
-    <div class=" mb-3 carousel-item" *ngFor="let photo of photos; let i = index" [class.active]="currentIndex === i">
-      <img [src]="photo.url" alt="{{ photo.title }}">
+<div class="container">
+  <div class="carousel">
+    <div class="row align-items-center">
+      <div class="col-md-2">
+        <button class="carousel-button" (click)="previousPhoto()">
+          <i class="bi bi-arrow-left-circle"></i>
+        </button>
+      </div>
+      <div class="col-md-8 carousel-container">
+        <div class="mb-3 carousel-item" *ngFor="let photo of photos; let i = index" [class.active]="currentIndex === i">
+          <div class="d-flex carousel-cnt-items">
+            <div class="">
+              <img class="fixed-height-image" [src]="photo.url" alt="{{ photo.title }}">
+            </div>
+            <div class="title-container ml-3">
+              <div class="cnt-title">
+                <h2>{{ photo.title }}</h2>
+              </div>
+              <div class="cnt-info">
+                <h5 *ngIf="photo.subtitle">{{ photo.subtitle }}</h5>
+                <p class="details">{{ photo.details }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <button class="carousel-button" (click)="nextPhoto()">
+          <i class="bi bi-arrow-right-circle"></i>
+        </button>
+      </div>
     </div>
-  </div>
-  <div class=" m-4 carousel-controls">
-    <button class="mx-3" (click)="previousPhoto()">Anterior</button>
-    <button class="mx-3" (click)="nextPhoto()">Siguiente</button>
   </div>
 </div>

@@ -33,7 +33,7 @@ export class CarrouselComponent {
   startInterval() {
     this.intervalId = setInterval(() => {
       this.nextPhoto();
-    }, 3000);
+    }, 5000);
   }
 
   stopInterval() {

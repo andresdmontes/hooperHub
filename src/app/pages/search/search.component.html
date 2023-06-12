@@ -5,12 +5,13 @@
         <h1 class="text-center">Buscador de Jugadores y Equipos</h1>
         <div class="row align-items-center justify-content-start">
           <div class="col-md-3 col-12">
-            <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players', 'Teams']" class="w-100">
+            <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players', 'Teams']"
+              class="w-100">
             </app-select>
           </div>
           <div class="col-md-9 col-12">
-            <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue" placeholder="Busca aquí"
-              class="w-100">
+            <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue"
+              placeholder="Busca aquí" class="w-100">
             </shared-search-box>
           </div>
         </div>
@@ -39,7 +40,7 @@
       </section>
 
       <section class="mx-auto align-items-center">
-        <app-carrousel title="Mi Carrusel" [photos]="carouselPhotos"></app-carrousel>
+        <app-carrousel [photos]="carouselPhotos"></app-carrousel>
       </section>
 
       <section class="news-section">
