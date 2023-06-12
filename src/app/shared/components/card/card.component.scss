@@ -6,7 +6,9 @@
   color: white;
   padding: 10px;
 
-
+  h3{
+    width: 15px;
+  }
   table {
     background-color: $gris-oscuro;
     color: white;
@@ -17,6 +19,17 @@
     tbody tr {
       background-color: $gris-oscuro;
       border: none;
+    }
+    tbody tr:hover {
+      td{
+        color:$gris-oscuro
+      }
+      background-color: $azul-claro;
+      border: none;
+    }
+
+    thead tr:hover {
+      background-color: $gris-oscuro;
     }
 
     thead th {
