@@ -31,7 +31,9 @@ export class SearchService {
   }
 
   obtenerTodosLosEquipos(): Observable<Equipo[]> {
-    return this.http.get<any[]>(this.baseApiUrl + 'teams?key=' + this.apiKey);
+    return this.http.get<Equipo[]>(
+      this.baseApiUrl + 'teams?key=' + this.apiKey
+    );
   }
 
   obtenerEquiposActivos(): Observable<Equipo[]> {
@@ -50,14 +52,14 @@ export class SearchService {
     );
   }
 
-  obtenerAgentesLibres(): Observable<any[]> {
-    return this.http.get<any[]>(
+  obtenerAgentesLibres(): Observable<Jugador[]> {
+    return this.http.get<Jugador[]>(
       this.baseApiUrl + 'FreeAgents?key=' + this.apiKey
     );
   }
 
-  obtenerJugadoresPorEquipo(equipoKey: string): Observable<any[]> {
-    return this.http.get<any[]>(
+  obtenerJugadoresPorEquipo(equipoKey: string): Observable<Jugador[]> {
+    return this.http.get<Jugador[]>(
       this.baseApiUrl + 'PlayersBasic/' + equipoKey + '?key=' + this.apiKey
     );
   }

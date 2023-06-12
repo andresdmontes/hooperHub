@@ -13,8 +13,8 @@ import { FilterService } from 'src/app/services/filter.service';
 })
 export class PlayerTableComponent {
   @Input() jugadoresFiltrados!: JugadorStats[];
-  public p: number = 1;
-  public orderAsc: boolean = true;
+  public p = 1;
+  public orderAsc = true;
   constructor(private readonly _filter: FilterService) {}
 
   public toggle(categoria: keyof JugadorStats) {

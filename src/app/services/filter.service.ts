@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { JugadorStats } from '../interfaces/estadisticas.interface';
 import { SearchService } from './search.service';
 import { Equipo } from '../interfaces/equipo.interface';
-import { Jugador } from '../interfaces/jugador.interface';
 import { StatsService } from './stats.service';
 
 @Injectable({ providedIn: 'root' })

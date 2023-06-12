@@ -22,11 +22,11 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
   ],
 })
 export class EquiposComponent implements OnInit {
-  isLoading: boolean = false;
+  isLoading = false;
   equipos: Equipo[];
   equiposFiltrados: Equipo[];
   conferencias: string[] = ['Eastern', 'Western', 'todas'];
-  conferenciaSeleccionada: string = 'todas';
+  conferenciaSeleccionada = 'todas';
 
   constructor(
     private equipoService: SearchService,

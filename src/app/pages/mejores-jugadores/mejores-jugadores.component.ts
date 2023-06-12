@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
 import { SearchService } from 'src/app/services/search.service';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
@@ -18,12 +12,12 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
   styleUrls: ['./mejores-jugadores.component.css'],
   imports: [CardComponent, CommonModule, SpinnerComponent],
 })
-export class MejoresJugadoresComponent implements OnInit, AfterViewInit {
+export class MejoresJugadoresComponent {
   @ViewChildren(CardComponent) appCards!: QueryList<CardComponent>;
 
-  equipos: Equipo[];
-  isLoaded;
-  titulos: string[];
+  public equipos: Equipo[];
+  public isLoaded;
+  public titulos: string[];
 
   constructor(private equipoService: SearchService) {
     (this.equipos = []),
@@ -37,9 +31,6 @@ export class MejoresJugadoresComponent implements OnInit, AfterViewInit {
       ]),
       (this.isLoaded = false);
   }
-  ngOnInit() {}
-  ngAfterViewInit() {}
-
   datosCargados(evento: boolean) {
     setTimeout(() => {
       this.isLoaded = evento;

@@ -3,7 +3,7 @@
   <div *ngIf="!loading" class="container">
     <div class="d-flex justify-content-between mb-3 w-auto">
       <h1>Filtrar Jugadores NBA</h1>
-      <button title="toggle button" aria-label="toggle filters" type="button" class="icon-button" (click)="toggleFilters($event)"><i class="bi bi-sliders"></i> </button>
+      <button title="toggle button" aria-label="toggle filters" type="button" class="icon-button" (click)="toggleFilters()"><i class="bi bi-sliders"></i> </button>
     </div>
 
     <div *ngIf="isFilterOpen" class="col  justify-content-around align-items-center" w-100>

@@ -1,13 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Equipo } from 'src/app/interfaces/equipo.interface';
-import { Jugador } from 'src/app/interfaces/jugador.interface';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { FormsModule } from '@angular/forms';
 import { FiltrarComponent } from 'src/app/shared/components/filtrar/filtrar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
-import { event } from 'jquery';
 import { FilterService } from 'src/app/services/filter.service';
 import { StatsService } from 'src/app/services/stats.service';
 import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
@@ -82,7 +79,7 @@ export class JugadoresComponent implements OnInit {
     );
   }
 
-  toggleFilters($event: Event) {
+  toggleFilters() {
     this.isFilterOpen = !this.isFilterOpen;
   }
 }

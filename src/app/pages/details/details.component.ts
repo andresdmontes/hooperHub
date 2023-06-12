@@ -9,7 +9,7 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
-  public TeamID: number = 0;
+  public TeamID = 0;
   public equipo!: Equipo; //TODO: Inicializar Equipo
   constructor(private _search: SearchService) {
 

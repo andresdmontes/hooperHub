@@ -35,7 +35,7 @@ export class FiltrarComponent {
   public categories: string[];
   public visualizar: string[];
   public elegible: string[];
-  toggleValue: string = 'qualifiers';
+  toggleValue = 'qualifiers';
 
   constructor() {
     this.conf = '';

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Photo } from '../../interfaces/carrouselFoto.interface';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./carrousel.component.css'],
   imports: [CommonModule],
 })
-export class CarrouselComponent {
+export class CarrouselComponent implements OnInit, OnDestroy {
   @Input() title: string;
   @Input() photos: Photo[];
   public currentIndex: number;
