@@ -1,4 +1,4 @@
-<div class="container tarjeta" *ngIf="datosCargados">
+<div class="tarjeta mx-auto" *ngIf="datosCargados">
   <div>
     <h3 class="display-3">{{ titulo }}</h3>
   </div>
@@ -12,41 +12,36 @@
     </div>
     <div class="col">
       <p class="m-0">
-        <strong> {{ mejorJugador.Position }}·{{ mejorJugador.Name }}</strong>
+        <strong>{{ mejorJugador.Position }}·{{ mejorJugador.Name }}</strong>
       </p>
     </div>
     <div class="col">
       <p class="m-0">
-        <strong>{{ getStats(mejorJugador) | number : ".1-1" }} ·
-          {{ titulo.charAt(0) }}PP
-        </strong>
+        <strong>{{ getStats(mejorJugador) | number : ".1-1" }} · {{ titulo.charAt(0) }}PP</strong>
       </p>
     </div>
   </div>
-  <table class="table table-striped table-hover">
+  <table class="table  table-sm">
     <thead>
       <tr>
-        <td>#</td>
-        <td>Nombre</td>
-        <td>Equipo</td>
-        <td>Media</td>
-        <td>{{ titulo.charAt(0) }}PP</td>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Equipo</th>
+        <th scope="col">Media</th>
+        <th scope="col">{{ titulo.charAt(0) }}PP</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let jugador of top5; let i = index">
-        <td>{{i+2}}</td>
+        <td scope="row">{{ i+2 }}</td>
         <td>{{ jugador.Name }}</td>
         <td>
-          <div class="d-flex">
+          <div class="d-flex align-items-center">
             <img width="30px" height="30px" src="{{ logoEquipo(jugador) }}" alt="logo" />
             <p>{{ siglasEquipo(jugador) }}</p>
           </div>
         </td>
-        <td>
-          {{ getStats(jugador) | number : ".1-1" }}
-        </td>
-
+        <td>{{ getStats(jugador) | number : ".1-1" }}</td>
         <td>{{ titulo.charAt(0) }}PP</td>
       </tr>
     </tbody>

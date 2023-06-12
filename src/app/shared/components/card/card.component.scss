@@ -1,7 +1,32 @@
 @import "../../../../assets/styles/colors";
+
 .tarjeta {
-  background-color: $azul-claro;
+  background-color: $gris-oscuro;
   border-radius: 10px;
-  margin: 30px auto;
+  color: white;
   padding: 10px;
+
+
+  table {
+    background-color: $gris-oscuro;
+    color: white;
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    tbody tr {
+      background-color: $gris-oscuro;
+      border: none;
+    }
+
+    thead th {
+      border: none;
+      color: white;
+    }
+
+    tbody td {
+      border: none;
+      color: white;
+    }
+  }
 }
