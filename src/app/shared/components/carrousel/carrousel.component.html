@@ -8,11 +8,11 @@
       </div>
       <div class="col-md-8 carousel-container">
         <div class="mb-3 carousel-item" *ngFor="let photo of photos; let i = index" [class.active]="currentIndex === i">
-          <div class="d-flex carousel-cnt-items">
-            <div class="">
+          <div class="cnt-carousel">
+            <div class="cnt-img">
               <img class="fixed-height-image" [src]="photo.url" alt="{{ photo.title }}">
             </div>
-            <div class="title-container ml-3">
+            <div class="title-container mt-1 ml-3">
               <div class="cnt-title">
                 <h2>{{ photo.title }}</h2>
               </div>
@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-2 mt-3">
         <button class="carousel-button" (click)="nextPhoto()">
           <i class="bi bi-arrow-right-circle"></i>
         </button>

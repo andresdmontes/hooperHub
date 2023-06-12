@@ -5,7 +5,10 @@
   font-family: "MyCustomFont";
   src: url("./assets/fonts/Kanit/Kanit-Light.ttf") format("truetype");
 }
-
+@font-face {
+  font-family: "Bolder";
+  src: url("./assets/fonts/Kanit/Kanit-ExtraBold.ttf") format("truetype");
+}
 html,
 body {
   font-family: "MyCustomFont";
