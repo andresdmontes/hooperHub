@@ -3,29 +3,16 @@
   <form class="form-group">
     <div class="row d-flex align-items-center">
       <div class="col-md-6">
-        <select
-          class="form-control"
-          name="conferencias"
-          id="conferenciaSelect"
-          [(ngModel)]="conferenciaSeleccionada"
-          (ngModelChange)="filtrarPorConferencia()"
-        >
-          <option
-            *ngFor="let conferencia of conferencias"
-            [value]="conferencia"
-          >
+        <select aria-label="select conferencia" class="form-control" name="conferencias" id="conferenciaSelect"
+          [(ngModel)]="conferenciaSeleccionada" (ngModelChange)="filtrarPorConferencia()">
+          <option *ngFor="let conferencia of conferencias" [value]="conferencia">
             {{ conferencia | titlecase }}
           </option>
         </select>
       </div>
       <div class="col-md-6">
         <div ngbDropdown class="d-inline-block">
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            id="dropdownBasic1"
-            ngbDropdownToggle
-          >
+          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
             Order By
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -41,19 +28,12 @@
     </div>
   </form>
 
-  <app-spinner
-    *ngIf="!isLoading"
-    class="spinner position-absolute top-50 start-50 translate-middle"
-  ></app-spinner>
+  <app-spinner *ngIf="!isLoading" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
   <div *ngIf="isLoading" class="row">
     <div class="col-md-4" *ngFor="let equipo of equiposFiltrados">
       <div class="row no-gutters">
         <div class="col-sm-5">
-          <img
-            class="card-img"
-            src="{{ equipo.WikipediaLogoUrl }}"
-            alt="{{ equipo.Name }}"
-          />
+          <img class="card-img" src="{{ equipo.WikipediaLogoUrl }}" alt="{{ equipo.Name }}" />
         </div>
         <div class="col-sm-7">
           <div class="card-body">
@@ -67,4 +47,3 @@
       </div>
     </div>
   </div>
-

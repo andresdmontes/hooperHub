@@ -12,7 +12,7 @@ import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.comp
   standalone: true,
   selector: 'app-equipos',
   templateUrl: './equipos.component.html',
-  styleUrls: ['./equipos.component.css'],
+  styleUrls: ['./equipos.component.scss'],
   imports: [
     CommonModule,
     FormsModule,

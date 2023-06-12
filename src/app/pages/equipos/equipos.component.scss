@@ -1,0 +1,23 @@
+@import './../../../assets/styles/colors';
+.btn-outline-primary {
+  background-color: $gris-oscuro;
+  color: #0d9eff;
+  border-color: $azul-oscuro;
+}
+
+.btn-primary {
+  background-color: $gris-oscuro;
+  border-color: $azul-oscuro;
+}
+
+// Estilos para las fuentes
+h1,
+.card-title {
+  color: $gris-oscuro;
+}
+.card-text {
+  color: $gris-oscuro;
+}
+.card {
+  background-color: $gris-oscuro;
+}
