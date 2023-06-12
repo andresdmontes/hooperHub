@@ -13,9 +13,9 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 export class HeaderComponent {
   getImageUrl(): string {
     if (window.innerWidth <= 768) {
-      return './../../assets/logos/logo azul.png';
-    } else {
       return './../../assets/logos/letras lado.png';
+    } else {
+      return './../../assets/logos/logo azul.png';
     }
   }
 }
