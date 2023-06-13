@@ -1,0 +1,48 @@
+@import "../../../../assets/styles/colors";
+
+.tarjeta {
+  background-color: $gris-oscuro;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+
+  h3 {
+    width: 15px;
+  }
+
+  table {
+    background-color: $gris-oscuro;
+    color: white;
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    tbody tr {
+      background-color: $gris-oscuro;
+      border: none;
+    }
+
+    tbody tr:hover {
+      td {
+        color: white;
+      }
+
+      background-color: $azul-logo;
+      border: none;
+    }
+
+    thead tr:hover {
+      background-color: $gris-oscuro;
+    }
+
+    thead th {
+      border: none;
+      color: white;
+    }
+
+    tbody td {
+      border: none;
+      color: white;
+    }
+  }
+}

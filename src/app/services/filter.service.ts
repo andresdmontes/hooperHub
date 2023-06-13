@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { JugadorStats } from '../interfaces/estadisticas.interface';
 import { SearchService } from './search.service';
 import { Equipo } from '../interfaces/equipo.interface';
-import { Jugador } from '../interfaces/jugador.interface';
 import { StatsService } from './stats.service';
+import { TeamStats } from '../interfaces/teamstats.interface';
 
 @Injectable({ providedIn: 'root' })
 export class FilterService {
   public equiposFiltrados: Equipo[] = [];
+  public equiposEstadisticasFiltrados: TeamStats[] = [];
   public jugadoresFiltrados: JugadorStats[] = [];
   constructor(
     private _searchService: SearchService,
@@ -23,6 +24,9 @@ export class FilterService {
   getJugadores(): void {
     this._statService.jugadores$.subscribe((jugadoresBuscados) => {
       this.jugadoresFiltrados = jugadoresBuscados;
+    });
+    this._statService.equipoStatsSubject$.subscribe((equipos) => {
+      this.equiposEstadisticasFiltrados = equipos;
     });
   }
   filtrarMejoresCategoria<T extends keyof JugadorStats>(
@@ -52,6 +56,35 @@ export class FilterService {
       });
     }
     return this.jugadoresFiltrados;
+  }
+
+  filtrarMejoresEquiposCategoria<T extends keyof TeamStats>(
+    categoria: T,
+    ascending: boolean
+  ): TeamStats[] {
+    this.getJugadores();
+    if (ascending) {
+      this.equiposEstadisticasFiltrados.sort((a, b) => {
+        if (typeof a[categoria] === 'number') {
+          return (b[categoria] as number) - (a[categoria] as number);
+        } else if (typeof a[categoria] === 'string') {
+          return (b[categoria] as string).localeCompare(a[categoria] as string);
+        } else {
+          return 0;
+        }
+      });
+    } else {
+      this.equiposEstadisticasFiltrados.sort((a, b) => {
+        if (typeof a[categoria] === 'number') {
+          return (a[categoria] as number) - (b[categoria] as number);
+        } else if (typeof a[categoria] === 'string') {
+          return (a[categoria] as string).localeCompare(b[categoria] as string);
+        } else {
+          return 0;
+        }
+      });
+    }
+    return this.equiposEstadisticasFiltrados;
   }
 
   filtrarEquipoPorConferencia(

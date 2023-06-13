@@ -3,17 +3,19 @@ import { Component, QueryList, ViewChildren } from '@angular/core';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
 import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
 import { Jugador } from 'src/app/interfaces/jugador.interface';
+import { TeamStats } from 'src/app/interfaces/teamstats.interface';
 import { SearchService } from 'src/app/services/search.service';
 import { StatsService } from 'src/app/services/stats.service';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
+import { TeamCard } from 'src/app/shared/components/team card/teamcard.component';
 
 @Component({
   standalone: true,
   selector: 'app-mejores-equipos',
   templateUrl: './mejores-equipos.component.html',
   styleUrls: ['./mejores-equipos.component.css'],
-  imports: [CardComponent, CommonModule, SpinnerComponent],
+  imports: [TeamCard, CommonModule, SpinnerComponent],
 })
 export class MejoresEquiposComponent {
   @ViewChildren(CardComponent) appCards!: QueryList<CardComponent>;
@@ -30,16 +32,21 @@ export class MejoresEquiposComponent {
         'Asistencias',
         'Robos',
         'Tapones',
-        'Minutos',
+        'Turnovers',
       ]),
       (this.isLoaded = false);
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.equipoService.equipos$.subscribe((data)=>{
+      this.equipos= data;
+    })
+  }
   ngAfterViewInit() {}
 
   datosCargados(evento: boolean) {
     setTimeout(() => {
       this.isLoaded = evento;
-    }, 1000);
+    }, 800);
   }
+
 }
