@@ -16,5 +16,6 @@ export interface Equipo {
   "WikipediaLogoUrl": string,
   "WikipediaWordMarkUrl": null,
   "GlobalTeamID": number,
-  "NbaDotComTeamID": number
+  "NbaDotComTeamID": number,
+  "HeadCoach": string,
 }

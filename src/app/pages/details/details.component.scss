@@ -1,0 +1,34 @@
+@import './../../../assets/styles/colors';
+
+.cnt-info {
+  .cnt-name {
+    font-family: 'Bolder';
+  }
+
+  background-color: $gris-oscuro;
+  color: white;
+}
+
+.cnt-stats {
+  background-color: #607381;
+
+  .cnt-name {
+    font-family: 'Bolder';
+  }
+
+  .cnt-stats-data {
+    // Estilos para los datos de estadísticas
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-family: 'Bolder';
+    color: white;
+
+    .stat-item {
+      margin-right: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+  }
+}

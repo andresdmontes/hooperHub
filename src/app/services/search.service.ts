@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Equipo } from '../interfaces/equipo.interface';
 import { Jugador } from '../interfaces/jugador.interface';
+import { Stadium } from '../interfaces/stadium.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +17,13 @@ export class SearchService {
   private jugadoresSubject: BehaviorSubject<Jugador[]> = new BehaviorSubject<
     Jugador[]
   >([]);
+  private stadiums: BehaviorSubject<Stadium[]> = new BehaviorSubject<Stadium[]>(
+    []
+  );
 
   equipos$: Observable<Equipo[]> = this.equiposSubject.asObservable();
   jugadores$: Observable<Jugador[]> = this.jugadoresSubject.asObservable();
+  estadios$: Observable<Stadium[]> = this.stadiums.asObservable();
 
   constructor(private http: HttpClient) {
     this.obtenerTodosLosEquipos().subscribe((equipos) => {
@@ -27,6 +32,9 @@ export class SearchService {
 
     this.obtenerTodosLosJugadoresActivos().subscribe((jugadores) => {
       this.jugadoresSubject.next(jugadores);
+    });
+    this.obtenerEstadios().subscribe((estadios) => {
+      this.stadiums.next(estadios);
     });
   }
 
@@ -61,6 +69,12 @@ export class SearchService {
   obtenerJugadoresPorEquipo(equipoKey: string): Observable<Jugador[]> {
     return this.http.get<Jugador[]>(
       this.baseApiUrl + 'PlayersBasic/' + equipoKey + '?key=' + this.apiKey
+    );
+  }
+
+  obtenerEstadios() {
+    return this.http.get<Stadium[]>(
+      'https://api.sportsdata.io/v3/nba/scores/json/Stadiums?key=36ab1764fc1c4031bb926d88a05a585a'
     );
   }
 }
