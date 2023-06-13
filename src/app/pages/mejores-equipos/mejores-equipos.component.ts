@@ -1,12 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import { Component, QueryList, ViewChildren, OnInit } from '@angular/core';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
-<<<<<<< HEAD
-=======
-import { JugadorStats } from 'src/app/interfaces/estadisticas.interface';
-import { Jugador } from 'src/app/interfaces/jugador.interface';
-import { TeamStats } from 'src/app/interfaces/teamstats.interface';
->>>>>>> feature/styles
 import { SearchService } from 'src/app/services/search.service';
 import { CardComponent } from 'src/app/shared/components/card/card.component';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
@@ -19,7 +13,7 @@ import { TeamCard } from 'src/app/shared/components/team card/teamcard.component
   styleUrls: ['./mejores-equipos.component.css'],
   imports: [TeamCard, CommonModule, SpinnerComponent],
 })
-export class MejoresEquiposComponent {
+export class MejoresEquiposComponent implements OnInit{
   @ViewChildren(CardComponent) appCards!: QueryList<CardComponent>;
 
   public equipos: Equipo[];
@@ -43,8 +37,6 @@ export class MejoresEquiposComponent {
       this.equipos= data;
     })
   }
-  ngAfterViewInit() {}
-
   datosCargados(evento: boolean) {
     setTimeout(() => {
       this.isLoaded = evento;
