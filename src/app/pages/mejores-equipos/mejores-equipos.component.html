@@ -3,23 +3,23 @@
   <div class="d-flex flex-wrap justify-content-center align-items-center" style="height: 100%;">
 
     <div class="col-12 col-md-6 col-lg-4 px-2">
-      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[0]" categoria="Points"
-        (isLoaded)="datosCargados($event)"></app-card>
+      <app-card-team equipo="si" [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[0]" categoria="Points"
+        (isLoaded)="datosCargados($event)"></app-card-team>
     </div>
     <div class="col-12 col-md-6 col-lg-4 px-2">
-      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[1]" categoria="Rebounds"></app-card>
+      <app-card-team equipo="si" [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[1]" categoria="Rebounds"></app-card-team>
     </div>
     <div class="col-12 col-md-6 col-lg-4 px-2">
-      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[2]" categoria="Assists"></app-card>
+      <app-card-team equipo="si" [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[2]" categoria="Assists"></app-card-team>
     </div>
     <div class="col-12 col-md-6 col-lg-4 px-2">
-      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[3]" categoria="Steals"></app-card>
+      <app-card-team equipo="si" [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[3]" categoria="Steals"></app-card-team>
     </div>
     <div class="col-12 col-md-6 col-lg-4 px-2">
-      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[4]" categoria="BlockedShots"></app-card>
+      <app-card-team equipo="si" [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[4]" categoria="BlockedShots"></app-card-team>
     </div>
     <div class="col-12 col-md-6 col-lg-4 px-2">
-      <app-card [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[5]" categoria="Minutes"></app-card>
+      <app-card-team equipo="si" [ngClass]="{'hidden': !isLoaded}" class="m-3" [titulo]="titulos[5]" categoria="Turnovers"></app-card-team>
     </div>
 
   </div>

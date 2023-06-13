@@ -8,15 +8,15 @@
     </div>
     <div class="col-5">
       <p class="m-0">
-        <strong>{{ mejorJugador.Position }} · {{ mejorJugador.Name }}</strong>
+        <strong>{{ mejorEquipo.Name }}</strong>
       </p>
     </div>
     <div class="col-2 d-flex align-items-end">
-      <img width="50px" height="50px" src="{{ logoEquipo(mejorJugador) }}" alt="logo" />
+      <img width="50px" height="50px" src="{{ getlogoEquipo(mejorEquipo) }}" alt="logo" />
     </div>
     <div class="col-2">
       <p class="m-0">
-        <strong>{{ getStats(mejorJugador) | number : ".1-1" }}</strong>
+        <strong>{{ getStats(mejorEquipo) | number : ".1-1" }}</strong>
       </p>
     </div>
     <div class="col-2">
@@ -36,16 +36,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let jugador of top5; let i = index">
+      <tr *ngFor="let equipo of top5; let i = index">
         <td scope="row">{{ i+2 }}</td>
-        <td>{{ jugador.Name }}</td>
+        <td>{{ equipo.Name }}</td>
         <td>
           <div class="d-flex align-items-center">
-            <img width="30px" height="30px" src="{{ logoEquipo(jugador) }}" alt="logo" />
-            <p>{{ siglasEquipo(jugador) }}</p>
+            <img width="30px" height="30px" src="{{ getlogoEquipo(equipo) }}" alt="logo" />
           </div>
         </td>
-        <td>{{ getStats(jugador) | number : ".1-1" }}</td>
+        <td>{{ getStats(equipo) | number : ".1-1" }}</td>
         <td>{{ titulo.charAt(0) }}PP</td>
       </tr>
     </tbody>

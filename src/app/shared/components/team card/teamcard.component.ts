@@ -6,24 +6,26 @@ import { RouterModule } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
 import { FilterService } from 'src/app/services/filter.service';
+import { TeamStats } from 'src/app/interfaces/teamstats.interface';
 
 @Component({
   standalone: true,
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss'],
+  selector: 'app-card-team',
+  templateUrl: './teamcard.component.html',
+  styleUrls: ['./teamcard.component.scss'],
   imports: [CommonModule, RouterModule],
 })
-export class CardComponent implements OnInit {
+export class TeamCard implements OnInit {
   @Output() isLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();
   datosCargados = false;
   año: number;
   equipos: Equipo[];
-  estadisticasJugadores: JugadorStats[];
-  mejorJugador: JugadorStats;
-  top5: JugadorStats[];
+  estadisticasEquipors: TeamStats[];
+  mejorEquipo: TeamStats;
+  top5: TeamStats[];
   @Input() titulo: string;
-  @Input() categoria: keyof JugadorStats;
+  @Input() categoria: keyof TeamStats;
+  @Input() equipo: string;
 
   constructor(
     private _statsService: StatsService,
@@ -32,30 +34,31 @@ export class CardComponent implements OnInit {
   ) {
     this.equipos = [];
     this.año = 2023;
-    this.estadisticasJugadores = [];
-    this.mejorJugador = this.estadisticasJugadores[0];
+    this.estadisticasEquipors = [];
+    this.mejorEquipo = this.estadisticasEquipors[0];
     this.top5 = [];
     this.titulo = '';
-    this.categoria = 'Points';
+    this.categoria = 'Name';
+    this.equipo = '';
   }
 
   ngOnInit() {
-    this.getTodasEstadisticasJugadores();
+    this.getTodasEstadisticasEquipos();
     this._searchService.equipos$.subscribe((data) => {
       this.equipos = data;
     });
   }
 
-  getTodasEstadisticasJugadores() {
+  getTodasEstadisticasEquipos() {
     this._statsService
-      .obtenerTodasLasEstadisticasJugadores(this.año)
-      .subscribe((jugadores) => {
-        this.estadisticasJugadores = jugadores;
+      .obtenerTodasLasEstadisticasEquipos(this.año)
+      .subscribe((equipos) => {
+        this.estadisticasEquipors = equipos;
 
         this.top5 = this._filterService
-          .filtrarMejoresCategoria(this.categoria, true)
+          .filtrarMejoresEquiposCategoria(this.categoria, true)
           .slice(1, 5);
-        this.mejorJugador = this._filterService.filtrarMejoresCategoria(
+        this.mejorEquipo = this._filterService.filtrarMejoresEquiposCategoria(
           this.categoria,
           true
         )[0];
@@ -65,29 +68,23 @@ export class CardComponent implements OnInit {
       });
   }
 
-  getStats(jugador: JugadorStats) {
-    return (jugador[this.categoria] as number) / jugador.Games;
+  getStats(equipo: TeamStats) {
+    return (equipo[this.categoria] as number) / equipo.Games;
   }
 
   getType() {
-    return typeof this.mejorJugador[this.categoria];
+    return typeof this.mejorEquipo[this.categoria];
   }
-  getEquipoPorJugador(jugador: JugadorStats): Equipo | undefined {
-    const equipoID = jugador.TeamID;
+
+  getEquipoPorTeam(team: TeamStats): Equipo | undefined {
+    let equipoID = team.TeamID;
     return this.equipos.find((e) => e.TeamID === equipoID);
   }
 
-  logoEquipo(jugador: JugadorStats): string {
-    const equipo = this.getEquipoPorJugador(jugador);
+  getlogoEquipo(team: TeamStats): string {
+    let equipo = this.getEquipoPorTeam(team);
     if (equipo) {
       return equipo.WikipediaLogoUrl;
-    }
-    return '';
-  }
-  siglasEquipo(jugador: JugadorStats): string {
-    const equipo = this.getEquipoPorJugador(jugador);
-    if (equipo) {
-      return equipo.Key;
     }
     return '';
   }
