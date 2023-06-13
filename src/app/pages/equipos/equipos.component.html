@@ -31,16 +31,18 @@
   <app-spinner *ngIf="!isLoading" class="spinner position-absolute top-50 start-50 translate-middle"></app-spinner>
   <div *ngIf="isLoading" class="row">
     <div class="col-md-4" *ngFor="let equipo of equiposFiltrados">
-      <div class="row no-gutters">
+      <div class="p-4 row no-gutters">
         <div class="col-sm-5">
           <img class="card-img" src="{{ equipo.WikipediaLogoUrl }}" alt="{{ equipo.Name }}" />
         </div>
         <div class="col-sm-7">
           <div class="card-body">
-            <h5 class="card-title">{{ equipo.Name }}</h5>
-            <p class="card-text">
-              {{ equipo.Conference }} - {{ equipo.Division }}
-            </p>
+            <div class="cnt-info">
+              <h5 class="card-title">{{ equipo.Name }}</h5>
+              <p class="card-text">
+                {{ equipo.Conference }} - {{ equipo.Division }}
+              </p>
+            </div>
             <a (click)="gotoRoute(equipo)" class="btn btn-primary">View Profile</a>
           </div>
         </div>

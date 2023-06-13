@@ -6,9 +6,10 @@
   color: white;
   padding: 10px;
 
-  h3{
+  h3 {
     width: 15px;
   }
+
   table {
     background-color: $gris-oscuro;
     color: white;
@@ -20,11 +21,13 @@
       background-color: $gris-oscuro;
       border: none;
     }
+
     tbody tr:hover {
-      td{
-        color:$gris-oscuro
+      td {
+        color: white;
       }
-      background-color: $azul-claro;
+
+      background-color: $azul-logo;
       border: none;
     }
 

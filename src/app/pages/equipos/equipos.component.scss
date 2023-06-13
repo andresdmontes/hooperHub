@@ -10,9 +10,9 @@
   border-color: $azul-oscuro;
 }
 
-// Estilos para las fuentes
 h1,
 .card-title {
+  font-weight: 600;
   color: $gris-oscuro;
 }
 .card-text {
@@ -20,4 +20,12 @@ h1,
 }
 .card {
   background-color: $gris-oscuro;
+}
+
+@media (max-width: 767px) {
+  .card-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
