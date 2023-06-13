@@ -78,6 +78,13 @@ export class JugadoresComponent implements OnInit {
       true
     );
   }
+  aptoSeleccionado() {
+    this.categoria = this.filters.form.form.value['categoria'];
+    console.log(this.categoria);
+    this.jugadoresFiltrados = this.jugadoresFiltrados.filter((jugador) => {
+      return jugador.Games > 65;
+    });
+  }
 
   toggleFilters() {
     this.isFilterOpen = !this.isFilterOpen;

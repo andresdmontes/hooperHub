@@ -31,22 +31,12 @@
   </app-select>
   <app-select
     class="form-control"
-    [options]="visualizar"
-    class="flex"
-    name="categoria"
-    [(ngModel)]="mode"
-    placeholder="Visualizar"
-    (ngModelChange)="selectedMode()"
-  >
-  </app-select>
-  <app-select
-    class="form-control"
     [options]="elegible"
     class="flex"
     name="categoria"
     [(ngModel)]="apto"
     placeholder="Apto"
-    (ngModelChange)="selectedMode()"
+    (ngModelChange)="selectedApto()"
   >
   </app-select>
 </form>
