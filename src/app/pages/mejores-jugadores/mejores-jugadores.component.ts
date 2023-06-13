@@ -22,12 +22,12 @@ export class MejoresJugadoresComponent {
   constructor(private equipoService: SearchService) {
     (this.equipos = []),
       (this.titulos = [
-        'Puntos',
-        'Rebotes',
-        'Asistencias',
-        'Robos',
-        'Tapones',
-        'Minutos',
+        'Points',
+        'Rebounds',
+        'Assists',
+        'Rebounds',
+        'Blocks',
+        'Minutes',
       ]),
       (this.isLoaded = false);
   }

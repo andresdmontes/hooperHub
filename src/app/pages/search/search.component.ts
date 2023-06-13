@@ -31,33 +31,34 @@ export class SearchComponent {
   public notFound: boolean;
   carouselPhotos: Photo[] = [
     {
-      url: './../assets/img/AP23143137304842-1024x576.jpg',
+      url: './../assets/img/nuggets-ring.jpg',
       title: 'Denver Nuggets: ',
-      subtitle: 'Campeones Conferencia Oeste',
-      details: `Los denver Nuggets se proclaman vencedores del Oeste tras vencer a Minnesota, Phoenix y Los Angeles Laker de Lebron James.
-      Nikola Jokic, su jugador estrella (dos veces MVP)
-      lidera al equipo al triunfo en busca de su primer titulo.`,
+      subtitle: 'NBA CHAMPIONS',
+      details: `The Denver Nuggets win their first ever NBA championship after winning Miami 4-1. Led By the Serbian All-Star and 2x MVP. After defeating Minnesota, Phoenix
+      and the Los Angeles Lakers of LeBron James.The team showcased an outstanding performance led by Nikola Jokic and Jamal Murray, who contributed significantly to the victory through all
+      the postseason.`,
     },
     {
       url: './../assets/img/NBA Playoffs Bracket 060123.jpg',
-      title: 'Playoff cruce',
-      details: `Los playoffs de la NBA 22-23 han sido emocionantes y llenos de sorpresas, con equipos dando la sorpresa y eliminando a favoritos.
-       Ha habido actuaciones de jugadores estrella, con partidos reñidos y momentos clave que han mantenido a los aficionados enganchados a la trama.
-       A medida que avanza la postemporada, la intensidad y la competencia aumentan, dejando abierta la posibilidad de un campeón inesperado.`,
+      title: 'Playoff Table',
+      details: `The NBA playoffs 22-23 have been thrilling and full of surprises, with teams causing upsets and eliminating favorites.
+       There have been stellar performances from star players, with close games and key moments that have kept fans hooked to the storyline.
+       As the postseason progresses, the intensity and competition intensify, leaving the possibility open for an unexpected champion.`,
     },
     {
       url: './../assets/img/embiid-mvp.jpg',
       title: 'Joel Embiid',
       subtitle: ' MVP 2023',
-      details: `Debido a su dominio imparable en ambos extremos de la cancha, Su habilidad para anotar con eficiencia y liderar la liga en rebotes,
-       y capacidad para bloquear tiros, lo convirtieron en el jugador más completo y dominante de la temporada.`,
+      details: `Due to his unstoppable dominance on both ends of the court
+      , his ability to score efficiently and lead the league in rebounds,
+       and his capacity to block shots, he became the most complete and dominant player of the season.`,
     },
     {
       url: './../assets/img/heat-ecf.avif',
       title: 'Miami Heat: ',
       subtitle: 'Campeones Conferencia Este',
-      details: `La historia de Miami es digna de película, de no estar clasificado a playoff, a ganar al mejor equipo de la liga hasta alcanzar las finales.
-      ¿Serán capaces de llevarse el título? Jimmy Butler y compañía no se lo quieren poner fácil al conjunto de Colorado.`,
+      details: `Miami's story is worthy of a movie, going from not being qualified for the playoffs to defeating the best team in the league and reaching the Finals.
+       Will they be able to claim the title? Jimmy Butler and his teammates are determined to give the Colorado team a tough challenge.`,
     },
   ];
   constructor(private readonly _searchService: SearchService) {

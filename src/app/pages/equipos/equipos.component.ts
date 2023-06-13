@@ -25,8 +25,8 @@ export class EquiposComponent implements OnInit {
   isLoading = false;
   equipos: Equipo[];
   equiposFiltrados: Equipo[];
-  conferencias: string[] = ['Eastern', 'Western', 'todas'];
-  conferenciaSeleccionada = 'todas';
+  conferencias: string[] = ['Eastern', 'Western', 'All'];
+  conferenciaSeleccionada = 'All';
 
   constructor(
     private equipoService: SearchService,

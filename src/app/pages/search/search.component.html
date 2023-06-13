@@ -2,7 +2,7 @@
   <div class="cnt-search mx-auto">
     <main>
       <section class="search-section">
-        <h1 class="text-center">Buscador de Jugadores y Equipos</h1>
+        <h1 class="text-center">Search teams & players</h1>
         <div class="row align-items-center justify-content-start">
           <div class="col-md-3 col-12">
             <app-select  [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players', 'Teams']"
@@ -11,7 +11,7 @@
           </div>
           <div class="col-md-9 col-12">
             <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue"
-              placeholder="Busca aquí" class="w-100">
+              placeholder="Search" class="w-100">
             </shared-search-box>
           </div>
         </div>
@@ -22,13 +22,13 @@
           <div class="col">
             <div class="cnt-results" *ngIf="!notFound">
               <div *ngIf="filteredPlayers.length > 0">
-                <h2>Jugadores Encontrados:</h2>
+                <h2>Found Players:</h2>
                 <div class="row" *ngFor="let player of filteredPlayers">
                   <div class="col">{{ player.FirstName }} {{ player.LastName }}</div>
                 </div>
               </div>
               <div *ngIf="filteredTeams.length > 0">
-                <h2>Equipos Encontrados:</h2>
+                <h2>Found Teams:</h2>
                 <div class="row" *ngFor="let team of filteredTeams">
                   <div class="col">{{ team.City }} {{ team.Name }}</div>
                 </div>

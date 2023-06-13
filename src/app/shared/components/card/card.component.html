@@ -29,24 +29,22 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Equipo</th>
-        <th scope="col">Media</th>
-        <th scope="col">{{ titulo.charAt(0) }}PP</th>
+        <th scope="col">Name</th>
+        <th scope="col">Team</th>
+        <th scope="col">AVG</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let jugador of top5; let i = index">
         <td scope="row">{{ i+2 }}</td>
-        <td>{{ jugador.Name }}</td>
+        <td>{{ jugador.Position }} · {{ jugador.Name }}</td>
         <td>
           <div class="d-flex align-items-center">
             <img width="30px" height="30px" src="{{ logoEquipo(jugador) }}" alt="logo" />
-            <p>{{ siglasEquipo(jugador) }}</p>
           </div>
         </td>
         <td>{{ getStats(jugador) | number : ".1-1" }}</td>
-        <td>{{ titulo.charAt(0) }}PP</td>
+        <td>{{ titulo.charAt(0) }}PG</td>
       </tr>
     </tbody>
   </table>

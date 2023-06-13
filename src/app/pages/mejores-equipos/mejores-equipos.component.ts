@@ -23,11 +23,11 @@ export class MejoresEquiposComponent implements OnInit{
   constructor(private equipoService: SearchService) {
     (this.equipos = []),
       (this.titulos = [
-        'Puntos',
-        'Rebotes',
-        'Asistencias',
-        'Robos',
-        'Tapones',
+        'Points',
+        'Rebounds',
+        'Assits',
+        'Steals',
+        'Blocks',
         'Turnovers',
       ]),
       (this.isLoaded = false);

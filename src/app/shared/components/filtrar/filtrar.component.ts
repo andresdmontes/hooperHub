@@ -46,8 +46,8 @@ export class FiltrarComponent {
     this.conferences = ['Eastern', 'Western', 'All'];
     this.positions = ['PG', 'SG', 'SF', 'PF', 'C'];
     this.categories = ['Points', 'Rebounds', 'Assists', 'Steals'];
-    this.visualizar = ['Total', 'Por Partido'];
-    this.elegible = ['+65 partidos', 'Todos'];
+    this.visualizar = ['Total', 'Per Game'];
+    this.elegible = ['+65 games', 'All'];
   }
 
   selectedConf() {

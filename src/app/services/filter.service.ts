@@ -91,7 +91,7 @@ export class FilterService {
     conferenciaSeleccionada: string,
     equipos: Equipo[]
   ): Equipo[] {
-    if (conferenciaSeleccionada === 'todas') {
+    if (conferenciaSeleccionada === 'All') {
       return equipos;
     } else {
       return equipos.filter(
