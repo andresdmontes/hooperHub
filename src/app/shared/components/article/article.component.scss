@@ -1,0 +1,41 @@
+@import './../../../../assets/styles/colors';
+
+.cnt-article {
+  background-color: $gris-oscuro;
+  color: $gris-claro;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cnt-title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cnt-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cnt-data {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.cnt-data p {
+  color: $gris-medio;
+  margin-bottom: 10px;
+}
+
+.cnt-link a {
+  color: $azul-claro;
+  text-decoration: none;
+}
+
+.cnt-link a:hover {
+  text-decoration: underline;
+}

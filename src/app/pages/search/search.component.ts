@@ -8,6 +8,8 @@ import { Jugador } from 'src/app/interfaces/jugador.interface';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
 import { Photo } from 'src/app/shared/interfaces/carrouselFoto.interface';
 import { CarrouselComponent } from 'src/app/shared/components/carrousel/carrousel.component';
+import { ArticleComponent } from 'src/app/shared/components/article/article.component';
+import { NewsArticle } from 'src/app/interfaces/news.interface';
 
 @Component({
   standalone: true,
@@ -20,6 +22,7 @@ import { CarrouselComponent } from 'src/app/shared/components/carrousel/carrouse
     SearchBoxComponent,
     SelectRoleComponent,
     CarrouselComponent,
+    ArticleComponent,
   ],
 })
 export class SearchComponent {
@@ -29,6 +32,7 @@ export class SearchComponent {
   public filteredPlayers: Jugador[];
   public filteredTeams: Equipo[];
   public notFound: boolean;
+  public news: NewsArticle[];
   carouselPhotos: Photo[] = [
     {
       url: './../assets/img/nuggets-ring.jpg',
@@ -68,6 +72,11 @@ export class SearchComponent {
     this.filteredPlayers = [];
     this.filteredTeams = [];
     this.notFound = false;
+    this.news = [];
+  }
+
+  ngOnInit(): void {
+    this.loadNews();
   }
 
   searchByValue($event?: string): void {
@@ -111,5 +120,12 @@ export class SearchComponent {
         .slice(0, 8);
       console.log(this.filteredTeams);
     });
+  }
+
+  loadNews() {
+    this._searchService.obtenerNoticias().subscribe((data) => {
+      this.news = data.slice(0, 3);
+    });
+    console.log(this.news);
   }
 }

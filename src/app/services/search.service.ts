@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Equipo } from '../interfaces/equipo.interface';
 import { Jugador } from '../interfaces/jugador.interface';
 import { Stadium } from '../interfaces/stadium.interface';
+import { NewsArticle } from '../interfaces/news.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -80,7 +81,7 @@ export class SearchService {
     );
   }
   obtenerNoticias() {
-    return this.http.get<any[]>(
+    return this.http.get<NewsArticle[]>(
       'https://api.sportsdata.io/v3/nba/scores/json/News' +
         '?key=' +
         this.apiKey

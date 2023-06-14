@@ -5,13 +5,13 @@
         <h1 class="text-center">Search teams & players</h1>
         <div class="row align-items-center justify-content-start">
           <div class="col-md-3 col-12">
-            <app-select  [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players', 'Teams']"
+            <app-select [(ngModel)]="filtro" (ngModelChange)="searchByValue()" [options]="['Players', 'Teams']"
               class="w-100">
             </app-select>
           </div>
           <div class="col-md-9 col-12">
-            <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue"
-              placeholder="Search" class="w-100">
+            <shared-search-box (onDebounce)="searchByValue($event)" [initialValue]="initialValue" placeholder="Search"
+              class="w-100">
             </shared-search-box>
           </div>
         </div>
@@ -43,25 +43,12 @@
         <app-carrousel [photos]="carouselPhotos"></app-carrousel>
       </section>
 
-      <!-- <section class="news-section">
+      <section class="news-section">
         <h2>Últimas Noticias</h2>
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <div class="news-card">
-              <img src="news-image.jpg" alt="Imagen de Noticia" />
-              <h3>Título de la Noticia</h3>
-              <p>Descripción breve de la noticia...</p>
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <div class="news-card">
-              <img src="news-image.jpg" alt="Imagen de Noticia" />
-              <h3>Título de la Noticia</h3>
-              <p>Descripción breve de la noticia...</p>
-            </div>
-          </div>
+        <div class="row" *ngFor="let article of news">
+          <app-article [article]="article"></app-article>
         </div>
-      </section> -->
+      </section>
     </main>
   </div>
 </div>
