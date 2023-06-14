@@ -80,7 +80,7 @@ export class SearchService {
     );
   }
   obtenerNoticias() {
-    return this.http.get<Stadium[]>(
+    return this.http.get<any[]>(
       'https://api.sportsdata.io/v3/nba/scores/json/News' +
         '?key=' +
         this.apiKey
