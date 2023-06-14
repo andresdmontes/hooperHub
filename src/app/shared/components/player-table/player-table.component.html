@@ -42,13 +42,13 @@
       <tr *ngFor="let jugador of jugadoresFiltrados | paginate : { itemsPerPage: 20, currentPage: p }
         ">
         <td class="p-2 fs-4">{{ jugador.Name }}·{{ jugador.Position }}·{{ jugador.Team }}</td>
-        <td class="p-2 fs-4">{{ jugador.Games }}</td>
-        <td class="p-2 fs-4">{{ jugador.Minutes }}</td>
-        <td class="p-2 fs-4">{{ jugador.Points }}</td>
-        <td class="p-2 fs-4">{{ jugador.Rebounds }}</td>
-        <td class="p-2 fs-4">{{ jugador.Assists }}</td>
-        <td class="p-2 fs-4">{{ jugador.Steals }}</td>
-        <td class="p-2 fs-4">{{ jugador.BlockedShots }}</td>
+        <td class="p-2 fs-4">{{ jugador.Games | number:".0-0"}}</td>
+        <td class="p-2 fs-4">{{ jugador.Minutes  | number:".0-0" }}</td>
+        <td class="p-2 fs-4">{{ jugador.Points  | number:".0-0" }}</td>
+        <td class="p-2 fs-4">{{ jugador.Rebounds  | number:".0-0" }}</td>
+        <td class="p-2 fs-4">{{ jugador.Assists   | number:".0-0"}}</td>
+        <td class="p-2 fs-4">{{ jugador.Steals  | number:".0-0" }}</td>
+        <td class="p-2 fs-4">{{ jugador.BlockedShots  | number:".0-0" }}</td>
       </tr>
     </table>
   </div>

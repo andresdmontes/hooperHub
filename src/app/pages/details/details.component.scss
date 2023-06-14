@@ -34,21 +34,13 @@
   }
 }
 
-.cnt-players {
-  table {
-    thead {
-      th {
-        background-color: #607381;
-        border: none;
-      }
-    }
 
-  }
-}
 
 
 @media (max-width: 767px) {
-  .cnt-stats, .cnt-info{
+
+  .cnt-stats,
+  .cnt-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
