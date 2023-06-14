@@ -74,7 +74,16 @@ export class SearchService {
 
   obtenerEstadios() {
     return this.http.get<Stadium[]>(
-      'https://api.sportsdata.io/v3/nba/scores/json/Stadiums?key=36ab1764fc1c4031bb926d88a05a585a'
+      'https://api.sportsdata.io/v3/nba/scores/json/Stadiums' +
+        '?key=' +
+        this.apiKey
+    );
+  }
+  obtenerNoticias() {
+    return this.http.get<Stadium[]>(
+      'https://api.sportsdata.io/v3/nba/scores/json/News' +
+        '?key=' +
+        this.apiKey
     );
   }
 }
