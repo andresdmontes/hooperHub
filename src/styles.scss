@@ -5,10 +5,12 @@
   font-family: "MyCustomFont";
   src: url("./assets/fonts/Kanit/Kanit-Light.ttf") format("truetype");
 }
+
 @font-face {
   font-family: "Bolder";
   src: url("./assets/fonts/Kanit/Kanit-ExtraBold.ttf") format("truetype");
 }
+
 html,
 body {
   font-family: "MyCustomFont";
@@ -20,7 +22,7 @@ body {
 }
 
 a {
-  color: $azul-oscuro;
+  color: #607381;
   text-decoration: none;
 
   &:hover {
@@ -28,27 +30,21 @@ a {
   }
 }
 
-// Ejemplo de uso en una tabla
 table {
   border-collapse: collapse;
 
   th,
   td {
-    border: 1px solid $gris-medio;
     padding: 10px;
   }
 
   th {
-    background-color: $azul-oscuro;
+    background-color: $gris-oscuro;
     color: white;
-  }
-
-  tr:nth-child(even) {
-    background-color: $gris-claro;
   }
 
   tr:hover {
-    background-color: $azul-medio;
-    color: white;
+    background-color: #607381;
+    color: black;
   }
 }

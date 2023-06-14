@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Equipo } from 'src/app/interfaces/equipo.interface';
+import { Jugador } from 'src/app/interfaces/jugador.interface';
 import { Stadium } from 'src/app/interfaces/stadium.interface';
 import { TeamStats } from 'src/app/interfaces/teamstats.interface';
 import { SearchService } from 'src/app/services/search.service';
@@ -18,6 +19,7 @@ export class DetailsComponent implements OnInit {
   public equipo: Equipo;
   public estadisticasEquipo: TeamStats;
   public stadium: Stadium;
+  public jugadores: Jugador[];
   constructor(private _search: SearchService, private _stats: StatsService) {
     this.teamID = 0;
     this.estadisticasEquipo = {
@@ -115,31 +117,61 @@ export class DetailsComponent implements OnInit {
       GeoLat: 38.898056,
       GeoLong: -77.020833,
     };
-  }
-
-  loadTeam() {
-    this._search.equipos$.subscribe((data) => {
-      this.equipo = data.filter((equipo) => equipo.TeamID === this.teamID)[0];
-    });
-    this._stats.equipoStatsSubject$.subscribe((data) => {
-      this.estadisticasEquipo = data.filter(
-        (equipo) => equipo.TeamID === this.teamID
-      )[0];
-    });
-    this._search.estadios$.subscribe((estadios) => {
-      this.stadium = estadios.filter(
-        (estadio) => estadio.StadiumID === this.equipo.StadiumID
-      )[0];
-    });
-  }
-  getStats(categoria: keyof TeamStats) {
-    return (this.estadisticasEquipo[categoria] as number) / 82;
+    this.jugadores = [];
   }
 
   ngOnInit(): void {
-    if (history.state) {
+    if (history.state && history.state.id) {
       this.teamID = history.state.id;
     }
     this.loadTeam();
+  }
+
+  loadTeam(): void {
+    this._search.equipos$.subscribe((data) => {
+      const filteredEquipo = data.filter(
+        (equipo) => equipo.TeamID === this.teamID
+      );
+      if (filteredEquipo.length > 0) {
+        this.equipo = filteredEquipo[0];
+        this.loadPlayers(); // Cargar jugadores después de obtener el equipo
+      }
+    });
+    this._stats.equipoStatsSubject$.subscribe((data) => {
+      const filteredStats = data.filter(
+        (equipo) => equipo.TeamID === this.teamID
+      );
+      if (filteredStats.length > 0) {
+        this.estadisticasEquipo = filteredStats[0];
+      }
+    });
+    this._search.estadios$.subscribe((estadios) => {
+      const filteredStadium = estadios.filter(
+        (estadio) => estadio.StadiumID === this.equipo.StadiumID
+      );
+      if (filteredStadium.length > 0) {
+        this.stadium = filteredStadium[0];
+      }
+    });
+  }
+
+  loadPlayers(): void {
+    if (this.equipo) {
+      this._search
+        .obtenerJugadoresPorEquipo(this.equipo.Key)
+        .subscribe((data) => {
+          this.jugadores = data;
+        });
+    }
+  }
+
+  getStats(categoria: keyof TeamStats): number {
+    return this.estadisticasEquipo
+      ? (this.estadisticasEquipo[categoria] as number) / 82
+      : 0;
+  }
+
+  getHeight(jugador: Jugador): number {
+    return jugador.Height / 12;
   }
 }

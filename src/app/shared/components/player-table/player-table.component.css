@@ -1,3 +1,8 @@
-thead,th,tr:hover {
+tr:hover {
   background: #607381;
+}
+
+thead,
+th {
+  background: #303030;
 }

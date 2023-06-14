@@ -1,10 +1,11 @@
-<div class="cnt-equipo" *ngIf="equipo!=undefined && estadisticasEquipo!=undefined && stadium!=undefined">
-  <div class="cnt-info d-flex align-items-center mt-5 mx-auto p-2">
+<div class="cnt-equipo"
+  *ngIf="equipo!=undefined && estadisticasEquipo!=undefined && stadium!=undefined && jugadores!= undefined">
+  <div class="cnt-info d-flex align-items-center mt-5 mx-1 p-2">
     <div class="cnt-logo col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center">
       <img [src]="equipo.WikipediaLogoUrl" alt="Logo" class="logo" height="150px" width="150px">
     </div>
     <div class="cnt-data col-lg-9 col-md-9 col-sm-12">
-      <div class="d-flex align-items-center">
+      <div class="d-flex justify-content-center align-items-center">
         <div class="cnt-name">
           <h2>{{ equipo.City }} {{ equipo.Name }}</h2>
         </div>
@@ -13,14 +14,14 @@
         <div class="col">{{equipo.Division}} {{ equipo.Conference }}</div>
       </div>
       <div class="row mt-3">
-        <div class="col-lg-6 col-md-6 col-sm-12"><strong>Head Coach:</strong> {{equipo.HeadCoach}}</div>
-        <div class="col-lg-6 col-md-6 col-sm-12"><strong>Address:</strong> {{stadium.Name}} {{stadium.Address}}
+        <div class="col-lg-4 col-md-4 col-sm-12"><strong>Head Coach:</strong> {{equipo.HeadCoach}}</div>
+        <div class="col-lg-4 col-md-4 col-sm-12"><strong>Address:</strong> {{stadium.Name}} {{stadium.Address}}
           {{stadium.City}}, {{stadium.State}}</div>
       </div>
     </div>
   </div>
 
-  <div class="cnt-stats d-flex mx-auto justify-content-start align-items-center p-4">
+  <div class="cnt-stats d-flex mx-1 justify-content-start align-items-center p-4">
     <h2 class="cnt-name col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center">2022-23 Stats:</h2>
     <div class="cnt-stats-data col-lg-9 col-md-9 col-sm-12">
       <h3 class="stat-item">{{getStats('Points') | number : ".1-1"}} PPG</h3>
@@ -31,5 +32,27 @@
     </div>
   </div>
 
-  <div class="ctn-players"></div>
+  <div class="ctn-players col-9 mx-auto">
+    <table class="table table-borderless">
+      <thead>
+        <th>#</th>
+        <th>Player</th>
+        <th>Nationality</th>
+        <th>Height</th>
+        <th>Position</th>
+        <th>Weight</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jugador of jugadores">
+          <td class="p-2 fs-4">{{ jugador.Jersey }}</td>
+          <td class="p-2 fs-4">{{ jugador.FirstName }} {{ jugador.LastName}} ·{{ jugador.Position }}·{{ jugador.Team }}
+          </td>
+          <td class="p-2 fs-4">{{ jugador.BirthCity }}, {{jugador.BirthCountry}} </td>
+          <td class="p-2 fs-4">{{ getHeight(jugador) | number : ".1-1"}}ft</td>
+          <td class="p-2 fs-4">{{ jugador.Position }}</td>
+          <td class="p-2 fs-4">{{ jugador.Weight }} lb</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
