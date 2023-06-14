@@ -1,11 +1,12 @@
 @import "./../../../../assets/styles/colors";
+
 .navbar-toggler-right {
   margin-left: auto;
 }
 
 .fixed-position {
   position: fixed;
-  top: 45px;
+  top: 90px;
   right: 40px;
   background-color: #fff;
   padding: 4px 25px;
@@ -13,14 +14,23 @@
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
+
 .turnus-navbar {
+  font-family: 'Bold';
   background-color: $gris-oscuro;
-  font-size: 20px;
-  .navbar-nav .nav-link {
-    color: $gris-claro;
+  font-size: 26px;
+
+  .large {
+    color: white;
   }
-  .small{
+  .large:hover{
+    background-color: $azul-logo;
+    border-radius: 15px;
+  }
+
+  .small {
     font-size: 16px;
+    color: $gris-claro;
   }
 
   .navbar-toggler {
@@ -33,7 +43,8 @@
   .navbar-toggler:focus {
     color: $azul-medio;
   }
-  .navbar-nav{
+
+  .navbar-nav {
     width: 100%;
     display: flex;
     justify-content: space-evenly;

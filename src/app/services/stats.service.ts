@@ -11,7 +11,7 @@ import { TeamStats } from '../interfaces/teamstats.interface';
 export class StatsService {
   private baseApiUrl = 'https://api.sportsdata.io/v3/nba/stats/json/';
 
-  private apiKey = '36ab1764fc1c4031bb926d88a05a585a';
+  private apiKey = '3b6651536ba04d119076c453c0941dbd';
   private jugadoresSubject: BehaviorSubject<JugadorStats[]> =
     new BehaviorSubject<JugadorStats[]>([]);
 

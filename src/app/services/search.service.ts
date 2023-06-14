@@ -11,7 +11,7 @@ import { NewsArticle } from '../interfaces/news.interface';
 })
 export class SearchService {
   private baseApiUrl = 'https://api.sportsdata.io/v3/nba/scores/json/';
-  private apiKey = '36ab1764fc1c4031bb926d88a05a585a';
+  private apiKey = '3b6651536ba04d119076c453c0941dbd';
   private equiposSubject: BehaviorSubject<Equipo[]> = new BehaviorSubject<
     Equipo[]
   >([]);

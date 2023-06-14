@@ -10,12 +10,4 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
   styleUrls: ['./header.component.scss'],
   imports: [RouterModule, CommonModule, NavBarComponent],
 })
-export class HeaderComponent {
-  getImageUrl(): string {
-    if (window.innerWidth <= 768) {
-      return './../../assets/logos/letras lado.png';
-    } else {
-      return './../../assets/logos/logo azul.png';
-    }
-  }
-}
+export class HeaderComponent {}

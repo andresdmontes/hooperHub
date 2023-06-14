@@ -11,6 +11,11 @@
   src: url("./assets/fonts/Kanit/Kanit-ExtraBold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Bold";
+  src: url("./assets/fonts/Kanit/Kanit-Bold.ttf") format("truetype");
+}
+
 html,
 body {
   font-family: "MyCustomFont";
