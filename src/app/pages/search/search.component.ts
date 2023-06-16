@@ -58,7 +58,7 @@ export class SearchComponent {
        and his capacity to block shots, he became the most complete and dominant player of the season.`,
     },
     {
-      url: './../assets/img/heat-ecf.avif',
+      url: './../assets/img/heat-ecf.jpg',
       title: 'Miami Heat: ',
       subtitle: 'Campeones Conferencia Este',
       details: `Miami's story is worthy of a movie, going from not being qualified for the playoffs to defeating the best team in the league and reaching the Finals.
