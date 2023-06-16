@@ -123,7 +123,6 @@ export class FilterService {
         this.equiposFiltrados
       );
       equiposIds = this.equiposFiltrados.map((equipo) => equipo.TeamID); // Obtener un array de IDs de equipos
-      console.log(equiposIds);
       filteredPlayers = this.jugadoresFiltrados.filter((jugador) =>
         equiposIds.includes(jugador.TeamID)
       );

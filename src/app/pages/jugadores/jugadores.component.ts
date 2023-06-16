@@ -69,7 +69,7 @@ export class JugadoresComponent implements OnInit {
     this.jugadoresFiltrados = this._filterService.filtrarJugadoresPorPosiciones(
       this.posicion
     );
-    console.log(this.posicion);
+
   }
   categoriaSeleccionada() {
     this.categoria = this.filters.form.form.value['categoria'];
@@ -80,7 +80,7 @@ export class JugadoresComponent implements OnInit {
   }
   aptoSeleccionado() {
     this.categoria = this.filters.form.form.value['categoria'];
-    console.log(this.categoria);
+
     this.jugadoresFiltrados = this.jugadoresFiltrados.filter((jugador) => {
       return jugador.Games > 65;
     });

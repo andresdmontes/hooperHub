@@ -83,7 +83,6 @@ export class SearchComponent {
     if ($event) {
       this.notFound = false;
       this.searchValue = $event;
-      console.log(this.filtro + '---' + this.searchValue);
       this.filtro === 'Players'
         ? this.filterByPlayer(this.searchValue)
         : this.filterByTeam(this.searchValue);
@@ -93,7 +92,6 @@ export class SearchComponent {
     } else {
       this.filteredPlayers = [];
       this.filteredTeams = [];
-      console.log('esctibe un termino de busqueda');
     }
   }
 
@@ -106,7 +104,6 @@ export class SearchComponent {
             player.LastName.toLocaleLowerCase().includes(term.toLowerCase())
         )
         .slice(0, 8);
-      console.log(this.filteredPlayers);
     });
   }
   public filterByTeam(term: string): void {
@@ -118,7 +115,7 @@ export class SearchComponent {
             team.City.toLowerCase().includes(term.toLowerCase())
         )
         .slice(0, 8);
-      console.log(this.filteredTeams);
+
     });
   }
 
@@ -126,6 +123,5 @@ export class SearchComponent {
     this._searchService.obtenerNoticias().subscribe((data) => {
       this.news = data.slice(0, 3);
     });
-    console.log(this.news);
   }
 }
