@@ -60,7 +60,7 @@ export class SearchComponent {
     {
       url: './../assets/img/heat-ecf.jpg',
       title: 'Miami Heat: ',
-      subtitle: 'Campeones Conferencia Este',
+      subtitle: 'Eastern Conference Champions',
       details: `Miami's story is worthy of a movie, going from not being qualified for the playoffs to defeating the best team in the league and reaching the Finals.
        Will they be able to claim the title? Jimmy Butler and his teammates are determined to give the Colorado team a tough challenge.`,
     },
